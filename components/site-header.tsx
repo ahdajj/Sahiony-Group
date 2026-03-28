@@ -117,10 +117,6 @@ export function SiteHeader({ lang }: { lang: Language }) {
           </Link>
         </div>
 
-        <Link href={switchLanguageHref} className="btn btn-secondary mobile-only lang-toggle-mobile">
-          {text.switchTo}
-        </Link>
-
         <button
           ref={toggleButtonRef}
           aria-label={open ? (isArabic(lang) ? 'إغلاق قائمة التنقل' : 'Close navigation menu') : (isArabic(lang) ? 'فتح قائمة التنقل' : 'Open navigation menu')}
