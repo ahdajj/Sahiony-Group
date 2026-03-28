@@ -109,8 +109,17 @@ export function SiteHeader({ lang }: { lang: Language }) {
         </nav>
 
         <div className="header-actions" style={{ display: open ? 'none' : undefined }}>
-          <Link href={switchLanguageHref} className="btn btn-secondary lang-toggle" aria-label={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}>
-            {text.switchTo}
+          <Link
+            href={switchLanguageHref}
+            className={`lang-switch ${lang === 'ar' ? 'is-ar' : ''}`}
+            aria-label={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}
+            title={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}
+          >
+            <span className="lang-switch-track">
+              <span className="lang-switch-thumb" aria-hidden="true" />
+              <span className="lang-switch-label lang-en" aria-hidden="true">English</span>
+              <span className="lang-switch-label lang-ar" aria-hidden="true">العربية</span>
+            </span>
           </Link>
           <Link href={withLang('/contact', lang)} className="btn btn-primary desktop-only">
             {text.ctaProposal}
