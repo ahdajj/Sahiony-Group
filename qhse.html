@@ -16,31 +16,41 @@
   <div class="bg-glow bg-glow-right" aria-hidden="true"></div>
 
   <header class="site-header" id="top">
-    <a href="index.html" class="brand">
-      <img src="assets/img/logo-icon.png" alt="SEC icon" class="brand-icon" />
-      <span class="brand-text" data-i18n="brandText">SEC Sahiony</span>
-    </a>
-    <nav class="main-nav" id="main-nav">
-      <a href="index.html" data-i18n="navHome">Home</a>
-      <a href="about.html" data-i18n="navAbout">About</a>
-      <a href="services.html" data-i18n="navServices">Services</a>
-      <a href="projects.html" data-i18n="navProjects">Projects</a>
-      <a href="qhse.html" data-i18n="navQhse">QHSE</a>
-      <a href="contact.html" data-i18n="navContact">Contact</a>
-    </nav>
-    <div class="header-actions">
-      <div class="lang-switch" role="group" aria-label="Language switcher">
-        <button type="button" class="lang-btn" data-lang="en">EN</button>
-        <button type="button" class="lang-btn" data-lang="ar">عربي</button>
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/img/logo-icon.png" alt="SEC icon" class="brand-icon" />
+        <span class="brand-text" data-i18n="brandText">SEC Sahiony</span>
+      </a>
+      <div class="header-right">
+        <nav class="main-nav" id="main-nav">
+          <a href="index.html" data-i18n="navHome">Home</a>
+          <a href="about.html" data-i18n="navAbout">About</a>
+          <a href="services.html" data-i18n="navServices">Services</a>
+          <a href="projects.html" data-i18n="navProjects">Projects</a>
+          <a href="qhse.html" data-i18n="navQhse">QHSE</a>
+          <a href="contact.html" data-i18n="navContact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-switch" role="group" aria-label="Language switcher">
+            <button type="button" class="lang-btn" data-lang="en">EN</button>
+            <button type="button" class="lang-btn" data-lang="ar">عربي</button>
+          </div>
+          <a class="btn btn-small" href="contact.html" data-i18n="headerCta">Start a Project</a>
+        </div>
       </div>
-      <a class="btn btn-small" href="contact.html" data-i18n="headerCta">Start a Project</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
-      <span></span><span></span><span></span>
-    </button>
   </header>
 
   <main>
+    <section class="page-hero reveal">
+      <p class="eyebrow" data-i18n="qhseEyebrow">Standards</p>
+      <h1 data-i18n="qhseTitle">Quality, Health, Safety, and Environmental Commitment</h1>
+      <p class="lead" data-i18n="qhseOneBody">System-based management and documented procedures for design, procurement, installation, commissioning, and maintenance quality.</p>
+    </section>
+
     <section class="qhse reveal" id="qhse">
       <div class="section-heading">
         <p class="eyebrow" data-i18n="qhseEyebrow">Standards</p>
@@ -64,7 +74,31 @@
   </main>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> <span data-i18n="footerText">SEC Sahiony Engineering & Contracting. All rights reserved.</span></p>
+    <div class="footer-shell">
+      <div class="footer-brand">
+        <div class="footer-brand-line">
+          <img src="assets/img/logo-icon.png" alt="SEC icon" class="footer-logo" />
+          <span class="brand-text" data-i18n="brandText">SEC Sahiony</span>
+        </div>
+        <p data-i18n="footerText">SEC Sahiony Engineering & Contracting. All rights reserved.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html" data-i18n="navHome">Home</a>
+        <a href="about.html" data-i18n="navAbout">About</a>
+        <a href="services.html" data-i18n="navServices">Services</a>
+        <a href="projects.html" data-i18n="navProjects">Projects</a>
+        <a href="qhse.html" data-i18n="navQhse">QHSE</a>
+        <a href="contact.html" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="footer-contact">
+        <a href="mailto:info@htaqatar.com">info@htaqatar.com</a>
+        <a href="tel:+963933335671">+963 933 33 5671</a>
+        <p data-i18n="contactAddress">Syria, Lattakia, Baghdad Street</p>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <p>© <span id="year"></span></p>
+    </div>
   </footer>
 
   <script src="script.js"></script>

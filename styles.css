@@ -80,20 +80,25 @@ html[lang="ar"] body {
 }
 
 .site-header {
+  /* Key layout shift: full-width sticky bar to mirror corporate top-nav structure. */
   position: sticky;
-  top: 16px;
-  margin: 16px auto;
-  width: min(1160px, calc(100% - 32px));
+  top: 0;
+  margin: 0;
+  width: 100%;
+  border-bottom: 1px solid rgba(16, 18, 35, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  z-index: 60;
+}
+
+.header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  width: min(1240px, calc(100% - 32px));
+  margin: 0 auto;
   gap: 20px;
-  padding: 14px 20px;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(16, 18, 35, 0.08);
-  border-radius: 16px;
-  backdrop-filter: blur(12px);
-  z-index: 40;
+  min-height: 86px;
+  position: relative;
 }
 
 .brand {
@@ -126,6 +131,13 @@ html[lang="ar"] .brand-text {
   display: flex;
   align-items: center;
   gap: 22px;
+}
+
+.header-right {
+  margin-inline-start: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
 }
 
 .main-nav a {
@@ -207,18 +219,36 @@ html[lang="ar"] .brand-text {
 }
 
 main {
-  width: min(1160px, calc(100% - 32px));
+  width: min(1240px, calc(100% - 32px));
   margin: 0 auto;
-  display: grid;
-  gap: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 34px 0 68px;
 }
 
 .hero {
-  margin-top: 46px;
+  /* Key layout shift: large centered hero block for strong first fold hierarchy. */
+  margin-top: 0;
+  min-height: clamp(560px, 78vh, 760px);
+  padding: clamp(46px, 7vw, 88px) clamp(24px, 5vw, 72px);
+  border-radius: 26px;
+  border: 1px solid rgba(16, 18, 35, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--card-shadow);
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 36px;
+  grid-template-columns: 1fr;
+  gap: 18px;
   align-items: center;
+  justify-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-copy {
+  display: grid;
+  justify-items: center;
 }
 
 .eyebrow {
@@ -239,7 +269,7 @@ main {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 5vw, 4.2rem);
   line-height: 1.03;
-  max-width: 12ch;
+  max-width: 16ch;
 }
 
 html[lang="ar"] .hero h1,
@@ -260,7 +290,7 @@ html[lang="ar"] .stats h3 {
 
 .lead {
   margin: 0;
-  max-width: 58ch;
+  max-width: 64ch;
   color: #3a4055;
   font-size: 1.05rem;
   line-height: 1.8;
@@ -272,17 +302,38 @@ html[lang="ar"] .stats h3 {
   gap: 14px;
 }
 
+.page-hero {
+  padding: clamp(40px, 6vw, 74px) clamp(22px, 5vw, 62px);
+  border-radius: 24px;
+  border: 1px solid rgba(16, 18, 35, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.page-hero h1 {
+  margin: 14px auto 0;
+  max-width: 22ch;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  line-height: 1.1;
+  color: var(--navy);
+}
+
+.page-hero .lead {
+  margin: 18px auto 0;
+}
+
 .hero-visual {
   position: relative;
-  min-height: 440px;
+  min-height: 300px;
   display: grid;
   place-items: center;
   overflow: visible;
 }
 
 .hero-logo {
-  width: min(620px, 100%);
-  max-height: 70vh;
+  width: min(520px, 100%);
+  max-height: 44vh;
   object-fit: contain;
   filter: drop-shadow(0 22px 34px rgba(16, 18, 35, 0.2));
   animation: floatLogo 5s ease-in-out infinite;
@@ -317,6 +368,10 @@ html[lang="ar"] .stats h3 {
 }
 
 .stats {
+  padding: clamp(30px, 4vw, 46px);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(16, 18, 35, 0.09);
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
@@ -344,7 +399,14 @@ html[lang="ar"] .stats h3 {
 }
 
 section {
-  scroll-margin-top: 110px;
+  scroll-margin-top: 130px;
+}
+
+main > section:not(.hero):not(.stats):not(.contact) {
+  padding: clamp(30px, 4vw, 50px);
+  border-radius: 24px;
+  border: 1px solid rgba(16, 18, 35, 0.08);
+  background: rgba(255, 255, 255, 0.66);
 }
 
 .section-heading h2 {
@@ -466,7 +528,7 @@ section {
 }
 
 .contact {
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 .contact-card {
@@ -525,9 +587,73 @@ section {
 }
 
 .site-footer {
-  padding: 10px 16px 28px;
-  text-align: center;
+  border-top: 1px solid rgba(16, 18, 35, 0.08);
+  background: rgba(255, 255, 255, 0.84);
+  padding: 34px 16px 26px;
   color: #4a526f;
+}
+
+.footer-shell {
+  width: min(1240px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.2fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.footer-brand {
+  display: grid;
+  gap: 8px;
+}
+
+.footer-brand-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.footer-brand p {
+  margin: 0;
+}
+
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 14px;
+}
+
+.footer-nav a,
+.footer-contact a,
+.footer-contact p {
+  color: #3e455e;
+  text-decoration: none;
+  margin: 0;
+  font-weight: 600;
+}
+
+.footer-contact {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.footer-meta {
+  width: min(1240px, calc(100% - 32px));
+  margin: 18px auto 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(16, 18, 35, 0.08);
+  text-align: center;
+}
+
+.footer-meta p {
+  margin: 0;
 }
 
 .reveal {
@@ -596,9 +722,18 @@ section {
   max-width: none;
 }
 
+[dir="rtl"] .page-hero h1 {
+  max-width: none;
+}
+
 /* 6. Header: set direction so flex items render R→L */
 [dir="rtl"] .site-header {
   direction: rtl;
+}
+
+[dir="rtl"] .header-right {
+  margin-inline-start: 0;
+  margin-inline-end: auto;
 }
 
 [dir="rtl"] .main-nav {
@@ -616,14 +751,18 @@ section {
    Keep the same 1.1fr/0.9fr proportions as LTR; direction handles swap. */
 [dir="rtl"] .hero {
   direction: rtl;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr;
 }
 
 /* Restore normal content direction inside hero children so text
    inside them follows inline flow correctly */
 [dir="rtl"] .hero-copy,
 [dir="rtl"] .hero-visual {
-  direction: ltr;
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .page-hero {
   text-align: right;
 }
 
@@ -639,7 +778,11 @@ section {
 
 [dir="rtl"] .hero-actions {
   direction: rtl;
-  justify-content: flex-start;
+  justify-content: center;
+}
+
+[dir="rtl"] .footer-contact {
+  justify-items: start;
 }
 
 /* 8. Project highlight: move decorative logo image to the left */
@@ -714,17 +857,26 @@ section {
 }
 
 @media (max-width: 1024px) {
+  .header-inner {
+    min-height: 78px;
+  }
+
   .hero {
     grid-template-columns: 1fr;
+    min-height: 520px;
+  }
+
+  .page-hero {
+    text-align: center;
   }
 
   .hero-visual {
-    min-height: 360px;
+    min-height: 260px;
   }
 
   .hero-logo {
-    width: min(560px, 100%);
-    max-height: 56vh;
+    width: min(500px, 100%);
+    max-height: 38vh;
   }
 
   .stats,
@@ -740,10 +892,22 @@ section {
     background-position: right bottom;
   }
 
+  .footer-shell {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-contact {
+    justify-items: start;
+  }
+
   /* In RTL at tablet the hero collapses to 1 column — reset direction
      so hero-copy stacks on top of hero-visual in natural DOM order */
   [dir="rtl"] .hero {
     direction: ltr;
+  }
+
+  [dir="rtl"] .page-hero {
+    text-align: right;
   }
 
   /* Project highlight: flip decorative logo to bottom-left in RTL */
@@ -755,11 +919,14 @@ section {
 
 @media (max-width: 760px) {
   .site-header {
-    top: 10px;
+    top: 0;
+  }
+
+  .header-inner {
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: center;
-    padding: 10px 14px;
+    min-height: 68px;
     gap: 10px;
   }
 
@@ -817,11 +984,12 @@ section {
 
   main {
     gap: 48px;
+    padding-top: 18px;
   }
 
   .hero {
-    margin-top: 24px;
     gap: 20px;
+    min-height: 500px;
   }
 
   .hero-actions {
@@ -829,7 +997,7 @@ section {
   }
 
   .hero-visual {
-    min-height: 280px;
+    min-height: 240px;
   }
 
   .ring-1 {
@@ -855,7 +1023,7 @@ section {
 
   .hero-logo {
     width: min(94vw, 560px);
-    max-height: 44vh;
+    max-height: 34vh;
   }
 
   .stats,
@@ -868,6 +1036,15 @@ section {
 
   .contact-card {
     padding: 28px 20px;
+  }
+
+  .footer-shell,
+  .footer-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-contact {
+    justify-items: start;
   }
 
   .project-highlight {
@@ -892,11 +1069,11 @@ section {
 
 @media (max-width: 480px) {
   .hero-visual {
-    min-height: 240px;
+    min-height: 210px;
   }
 
   .hero-logo {
-    max-height: 36vh;
+    max-height: 30vh;
   }
 
   main {

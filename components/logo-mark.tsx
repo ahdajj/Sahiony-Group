@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export function LogoMark({
   src,
   alt,
@@ -12,7 +14,15 @@ export function LogoMark({
   const sizeClass = header ? 'md' : large ? 'lg' : 'sm';
   return (
     <div className={`logo-box ${sizeClass}`}>
-      <img src={src} alt={alt} />
+      <Image
+        src={src}
+        alt={alt}
+        width={320}
+        height={140}
+        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+        sizes="(max-width: 768px) 160px, 320px"
+        priority={header}
+      />
     </div>
   );
 }

@@ -7,10 +7,11 @@ Production-ready Next.js starter for:
 
 ## Deployment Ready Status
 
-This project is prepared for Vercel deployment.
+This project is prepared for both Vercel and Netlify deployment.
 - Next.js production build passes successfully
 - Public logo assets are already in [public](public)
 - Static asset headers are configured in [next.config.mjs](next.config.mjs)
+- Netlify build settings are configured in [netlify.toml](netlify.toml)
 
 ## Run locally
 
@@ -31,8 +32,27 @@ npm run start
 
 Recommended deployment targets:
 - Vercel
+- Netlify
 - Hostinger VPS / shared hosting with Node support
 - Any Linux VPS with Node.js
+
+## Deploy to Netlify
+
+1. Push this project to GitHub.
+2. In Netlify, click Add new site, then Import an existing project.
+3. Select your GitHub repository.
+4. Keep these values:
+	- Build command: npm run build
+	- Publish directory: leave empty
+5. Deploy site.
+
+Netlify will read [netlify.toml](netlify.toml) and use the Next.js runtime plugin automatically.
+
+### Netlify build settings in this repo
+
+- Build command: npm run build
+- Node version: 20
+- Plugin: @netlify/plugin-nextjs
 
 ## Deploy to Vercel (Free)
 

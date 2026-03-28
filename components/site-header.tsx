@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { LogoMark } from './logo-mark';
@@ -20,25 +21,25 @@ export function SiteHeader() {
   return (
     <header className="topbar">
       <div className="container topbar-inner">
-        <a href="/" className="brand">
+        <Link href="/" className="brand">
           <LogoMark src="/SEC LOGO SAHIONY.jpg" alt="Sahiony Group" header />
           <div className="brand-meta">
             <small>Sahiony Group</small>
             <span>Qatar & Syria Engineering Companies</span>
           </div>
-        </a>
+        </Link>
 
         <nav className="nav">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href}>
+            <Link key={item.href} href={item.href}>
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <a href="/contact" className="btn btn-primary desktop-only" style={{ display: open ? 'none' : undefined }}>
+        <Link href="/contact" className="btn btn-primary desktop-only" style={{ display: open ? 'none' : undefined }}>
           Request Proposal
-        </a>
+        </Link>
 
         <button
           aria-label="toggle navigation"
@@ -56,13 +57,13 @@ export function SiteHeader() {
           <div className="card soft">
             <div className="card-body card-grid">
               {navItems.map((item) => (
-                <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+                <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
                   {item.label}
-                </a>
+                </Link>
               ))}
-              <a href="/contact" className="btn btn-primary" onClick={() => setOpen(false)}>
+              <Link href="/contact" className="btn btn-primary" onClick={() => setOpen(false)}>
                 Request Proposal
-              </a>
+              </Link>
             </div>
           </div>
         </div>
