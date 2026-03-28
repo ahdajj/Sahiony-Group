@@ -35,6 +35,10 @@ body {
     linear-gradient(180deg, #eef1f6 0%, #f7f9fc 52%, #edf1f8 100%);
 }
 
+.page-shell[lang='ar'] {
+  font-family: var(--font-arabic), var(--font-sans), 'Segoe UI', sans-serif;
+}
+
 body.no-scroll {
   overflow: hidden;
 }
@@ -172,6 +176,20 @@ img {
 
 .nav a:hover {
   color: var(--navy);
+}
+
+.header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-toggle {
+  min-width: 100px;
+}
+
+.lang-toggle-mobile {
+  display: none;
 }
 
 .desktop-only {
@@ -679,6 +697,29 @@ img {
   display: none;
 }
 
+[dir='rtl'] .brand,
+[dir='rtl'] .company-top,
+[dir='rtl'] .feature-item,
+[dir='rtl'] .footer-inner,
+[dir='rtl'] .pill-row,
+[dir='rtl'] .actions {
+  direction: rtl;
+}
+
+[dir='rtl'] .project-logo {
+  right: auto;
+  left: 16px;
+}
+
+[dir='rtl'] .mobile-drawer {
+  right: auto;
+  left: 0;
+  border-left: 0;
+  border-right: 1px solid rgba(41, 51, 110, 0.14);
+  box-shadow: 14px 0 36px rgba(28, 38, 77, 0.22);
+  transform: translateX(-100%);
+}
+
 .hero,
 .section,
 .card,
@@ -709,6 +750,13 @@ img {
 
   .mobile-only {
     display: inline-flex;
+  }
+
+  .lang-toggle-mobile {
+    display: inline-flex;
+    min-width: auto;
+    padding: 10px 14px;
+    font-size: 12px;
   }
 
   .small-icon.mobile-only {
@@ -845,6 +893,26 @@ img {
 
   .company-top {
     flex-direction: column;
+  }
+
+  .topbar-inner {
+    min-height: 72px;
+  }
+
+  .brand-meta small {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+
+  .badge {
+    letter-spacing: 0.12em;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 9vw, 56px);
+    line-height: 1.1;
   }
 }
 

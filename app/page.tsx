@@ -18,35 +18,39 @@ import { ProjectCard } from '../components/project-card';
 import { SectionTitle } from '../components/section-title';
 import { SiteFooter } from '../components/site-footer';
 import { SiteHeader } from '../components/site-header';
-import {
-  brands,
-  companies,
-  featuredProjects,
-  groupHighlights,
-  services,
-  siteMap,
-  stats,
-  systems,
-  valueProps,
-} from '../lib/site-data';
+import { getLocalizedSiteData, resolveLanguage, uiText, withLang, type SearchParams } from '../lib/i18n';
 
-export default function HomePage() {
+export default async function HomePage({ searchParams }: { searchParams?: Promise<SearchParams> }) {
+  const lang = resolveLanguage(await searchParams);
+  const text = uiText[lang];
+  const {
+    brands,
+    companies,
+    featuredProjects,
+    groupHighlights,
+    services,
+    siteMap,
+    stats,
+    systems,
+    valueProps,
+  } = getLocalizedSiteData(lang);
+
   return (
-    <div className="page-shell">
-      <SiteHeader />
+    <div className="page-shell" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+      <SiteHeader lang={lang} />
       <main>
         <section className="container hero">
           <div style={{ display: 'grid', gap: 24 }}>
-            <span className="badge">Sahiony Group • Qatar • Syria • Contracting • MEP • Fire Protection</span>
-            <h1>Sahiony Group — engineering capability across Qatar and Syria.</h1>
+            <span className="badge">{text.hero.badge}</span>
+            <h1>{text.hero.title}</h1>
             <p className="lead">
-              This website presents one corporate group with two dedicated company branches: HTA Construction & Trading in Qatar and SEC Engineering & Contracting in Syria.
+              {text.hero.description}
             </p>
             <div className="actions">
               <a href="#companies" className="btn btn-primary">
-                Explore Group Structure <ArrowRight size={16} />
+                {text.hero.explore} <ArrowRight size={16} />
               </a>
-              <a href="/projects" className="btn btn-secondary">View Projects</a>
+              <a href={withLang('/projects', lang)} className="btn btn-secondary">{text.hero.viewProjects}</a>
             </div>
             <div className="grid-4">
               {stats.map((stat) => (
@@ -64,8 +68,8 @@ export default function HomePage() {
             <div className="hero-visual-header">
               <div className="grid-2" style={{ alignItems: 'center' }}>
                 <div>
-                  <div className="kicker">Group Identity</div>
-                  <h3 style={{ fontSize: 34, marginTop: 10 }}>Two engineering companies under one Sahiony Group presence</h3>
+                  <div className="kicker">{text.hero.identity}</div>
+                  <h3 style={{ fontSize: 34, marginTop: 10 }}>{text.hero.identityTitle}</h3>
                 </div>
                 <div className="logo-stack">
                   <LogoMark src="/SEC LOGO SAHIONY.jpg" alt="SEC Engineering and Contracting" large />
@@ -74,7 +78,7 @@ export default function HomePage() {
               </div>
 
               <div className="chip-grid">
-                {['HTA Qatar', 'SEC Syria', 'MEP Systems', 'Fire Protection', 'General Contracting', 'Maintenance & Projects'].map((item) => (
+                {text.hero.chips.map((item) => (
                   <div key={item} className="chip">{item}</div>
                 ))}
               </div>
@@ -94,8 +98,8 @@ export default function HomePage() {
         <section className="section section-alt" id="group">
           <div className="container grid-2">
             <div className="section-title">
-              <span className="badge gold">Group Overview</span>
-              <h2>One group structure. Two operating companies. Distinct markets.</h2>
+              <span className="badge gold">{text.sections.overviewBadge}</span>
+              <h2>{text.sections.overviewTitle}</h2>
             </div>
             <div className="inline-grid">
               {valueProps.map((item) => {
@@ -116,14 +120,14 @@ export default function HomePage() {
 
         <section className="container section" id="companies">
           <SectionTitle
-            eyebrow="Group Companies"
-            title="One group website with two dedicated company branches."
-            description="This architecture lets you market Sahiony Group as the umbrella while giving HTA Qatar and SEC Syria dedicated, professional spaces inside the same website."
+            eyebrow={text.sections.companiesEyebrow}
+            title={text.sections.companiesTitle}
+            description={text.sections.companiesDesc}
           />
           <div className="spacer-32" />
           <div className="grid-2">
             {companies.map((company) => (
-              <CompanyCard key={company.id} company={company} />
+              <CompanyCard key={company.id} company={company} lang={lang} />
             ))}
           </div>
         </section>
@@ -131,9 +135,9 @@ export default function HomePage() {
         <section className="section section-alt" id="services">
           <div className="container">
             <SectionTitle
-              eyebrow="Group Services"
-              title="Shared services organized under one premium framework."
-              description="The group site starts with a strong shared services page, then routes users to HTA Qatar or SEC Syria where needed."
+              eyebrow={text.sections.servicesEyebrow}
+              title={text.sections.servicesTitle}
+              description={text.sections.servicesDesc}
             />
             <div className="spacer-32" />
             <div className="grid-3">
@@ -160,14 +164,14 @@ export default function HomePage() {
 
         <section className="container section" id="projects">
           <SectionTitle
-            eyebrow="Projects"
-            title="One project hub, filtered later by HTA Qatar and SEC Syria."
-            description="The group website should use one central project area, with filters and future dedicated case studies for each company branch."
+            eyebrow={text.sections.projectsEyebrow}
+            title={text.sections.projectsTitle}
+            description={text.sections.projectsDesc}
           />
           <div className="spacer-32" />
           <div className="grid-3">
             {featuredProjects.map((project) => (
-              <ProjectCard key={project.title} title={project.title} category={project.category} summary={project.summary} />
+              <ProjectCard key={project.title} title={project.title} category={project.category} summary={project.summary} lang={lang} />
             ))}
           </div>
         </section>
@@ -175,9 +179,9 @@ export default function HomePage() {
         <section className="section section-alt" id="structure">
           <div className="container">
             <SectionTitle
-              eyebrow="Site Structure"
-              title="Recommended full site architecture for Sahiony Group."
-              description="This is the structure recommended for the production website."
+              eyebrow={text.sections.structureEyebrow}
+              title={text.sections.structureTitle}
+              description={text.sections.structureDesc}
             />
             <div className="spacer-32" />
             <div className="grid-2">
@@ -185,7 +189,7 @@ export default function HomePage() {
                 <div className="card-body">
                   <div className="small-icon"><Layers3 size={18} color="#d8a11a" /></div>
                   <div className="spacer-16" />
-                  <strong>Primary navigation</strong>
+                  <strong>{text.sections.primaryNavigation}</strong>
                   <div className="spacer-24" />
                   <div className="card-grid">
                     {siteMap.map((item) => (
@@ -204,7 +208,7 @@ export default function HomePage() {
                   <div className="card-body">
                     <div className="small-icon"><Building size={18} color="#d8a11a" /></div>
                     <div className="spacer-16" />
-                    <strong>Unified capability</strong>
+                    <strong>{text.sections.unifiedCapability}</strong>
                     <div className="spacer-24" />
                     <div className="grid-2">
                       {systems.map((item) => (
@@ -223,7 +227,7 @@ export default function HomePage() {
                   <div className="card-body">
                     <div className="small-icon"><FileText size={18} color="#d8a11a" /></div>
                     <div className="spacer-16" />
-                    <strong>Group suppliers and brands</strong>
+                    <strong>{text.sections.suppliers}</strong>
                     <div className="spacer-24" />
                     <div className="pill-row">
                       {brands.map((item) => (
@@ -243,12 +247,12 @@ export default function HomePage() {
               <div className="card-body">
                 <SectionTitle
                   eyebrow="QHSE"
-                  title="One professional quality and safety language across the group."
-                  description="The group website should present a consistent quality and safety mindset even while each company keeps its own operating profile."
+                  title={text.sections.qhseTitle}
+                  description={text.sections.qhseDesc}
                 />
                 <div className="spacer-24" />
                 <div className="grid-2">
-                  {['Continuous quality process', 'Customer satisfaction focus', 'Safe execution culture', 'Compliance-oriented delivery', 'Management accountability', 'Execution with discipline'].map((item) => (
+                  {text.sections.qhseItems.map((item) => (
                     <div key={item} className="highlight-box">{item}</div>
                   ))}
                 </div>
@@ -259,10 +263,10 @@ export default function HomePage() {
               <div className="card-body">
                 <div className="small-icon"><ShieldCheck size={18} color="#d8a11a" /></div>
                 <div className="spacer-16" />
-                <strong>Operational credibility</strong>
+                <strong>{text.sections.operationalCredibility}</strong>
                 <div className="spacer-24" />
                 <p className="lead" style={{ fontSize: 15 }}>
-                  The site is ready to hold policies, certifications, safety statistics, QA/QC flowcharts, and governance highlights. Later, HTA and SEC can each have their own compliance and credentials subsection without breaking the group structure.
+                  {text.sections.operationalDesc}
                 </p>
               </div>
             </article>
@@ -273,17 +277,17 @@ export default function HomePage() {
           <div className="container grid-2">
             <div>
               <SectionTitle
-                eyebrow="Group Contact"
-                title="One inquiry point with routing for HTA Qatar and SEC Syria."
-                description="The contact experience should feel unified at group level while still letting users choose the relevant company."
+                eyebrow={text.sections.groupContactEyebrow}
+                title={text.sections.groupContactTitle}
+                description={text.sections.groupContactDesc}
               />
               <div className="spacer-32" />
               <div className="grid-2">
                 {[
-                  { icon: Phone, title: 'Phone', value: '+963 933 33 5671 / +974 5517 7960' },
-                  { icon: Mail, title: 'Email', value: 'info@htaqatar.com / gm@htaqatar.com / anas@htaqatar.com' },
-                  { icon: MapPin, title: 'Offices', value: 'Doha, Qatar / Lattakia, Syria' },
-                  { icon: Briefcase, title: 'Inquiry Type', value: 'Group, HTA Qatar, SEC Syria, tenders, projects' },
+                  { icon: Phone, ...text.sections.contactCards[0] },
+                  { icon: Mail, ...text.sections.contactCards[1] },
+                  { icon: MapPin, ...text.sections.contactCards[2] },
+                  { icon: Briefcase, ...text.sections.contactCards[3] },
                 ].map((item) => {
                   const Icon = item.icon;
                   return (
@@ -305,19 +309,19 @@ export default function HomePage() {
               <div className="card-body">
                 <div className="small-icon"><Sparkles size={18} color="#d8a11a" /></div>
                 <div className="spacer-16" />
-                <strong>Request a Proposal</strong>
+                <strong>{text.sections.requestProposal}</strong>
                 <div className="spacer-24" />
                 <div className="form-grid">
-                  <input className="input" placeholder="Full name" />
-                  <input className="input" placeholder="Company name" />
-                  <input className="input" placeholder="Email address" />
-                  <input className="input" placeholder="Phone number" />
+                  <input className="input" placeholder={text.sections.fullName} />
+                  <input className="input" placeholder={text.sections.companyName} />
+                  <input className="input" placeholder={text.sections.emailAddress} />
+                  <input className="input" placeholder={text.sections.phoneNumber} />
                 </div>
                 <div className="spacer-16" />
-                <textarea className="textarea" placeholder="Tell us whether your inquiry is for Sahiony Group, HTA Qatar, or SEC Syria..." />
+                <textarea className="textarea" placeholder={text.sections.inquiryPlaceholder} />
                 <div className="spacer-24" />
-                <a href="/contact" className="btn btn-primary">
-                  Submit Inquiry <ArrowRight size={16} />
+                <a href={withLang('/contact', lang)} className="btn btn-primary">
+                  {text.sections.submitInquiry} <ArrowRight size={16} />
                 </a>
               </div>
             </article>
@@ -325,7 +329,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter lang={lang} />
     </div>
   );
 }

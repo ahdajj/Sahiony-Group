@@ -1,8 +1,10 @@
 import type { Company } from '../lib/site-data';
 import { LogoMark } from './logo-mark';
+import { type Language, uiText } from '../lib/i18n';
 
-export function CompanyCard({ company }: { company: Company }) {
+export function CompanyCard({ company, lang }: { company: Company; lang: Language }) {
   const Icon = company.icon;
+  const text = uiText[lang];
 
   return (
     <article className="card soft">
@@ -30,7 +32,7 @@ export function CompanyCard({ company }: { company: Company }) {
         </div>
 
         <div className="company-subpages">
-          <h4>Planned subpages</h4>
+          <h4>{text.sections.plannedSubpages}</h4>
           <div className="pill-row">
             {company.pages.map((item) => (
               <span key={item} className="pill gold">

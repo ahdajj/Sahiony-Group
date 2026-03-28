@@ -2,23 +2,27 @@ import { ArrowRight, Briefcase, Mail, MapPin, Phone } from 'lucide-react';
 import { SectionTitle } from '../../components/section-title';
 import { SiteFooter } from '../../components/site-footer';
 import { SiteHeader } from '../../components/site-header';
+import { resolveLanguage, uiText, type SearchParams } from '../../lib/i18n';
 
-export default function ContactPage() {
+export default async function ContactPage({ searchParams }: { searchParams?: Promise<SearchParams> }) {
+  const lang = resolveLanguage(await searchParams);
+  const text = uiText[lang];
+
   return (
-    <div className="page-shell">
-      <SiteHeader />
+    <div className="page-shell" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+      <SiteHeader lang={lang} />
       <main>
         <section className="container section">
           <div className="grid-2">
             <div>
-              <SectionTitle eyebrow="Contact" title="Group Contact" description="One inquiry point with routing for HTA Qatar and SEC Syria." />
+              <SectionTitle eyebrow={text.contactPage.eyebrow} title={text.contactPage.title} description={text.contactPage.description} />
               <div className="spacer-32" />
               <div className="grid-2">
                 {[
-                  { icon: Phone, title: 'Phone', value: '+963 933 33 5671 / +974 5517 7960' },
-                  { icon: Mail, title: 'Email', value: 'info@htaqatar.com / gm@htaqatar.com / anas@htaqatar.com' },
-                  { icon: MapPin, title: 'Offices', value: 'Doha, Qatar / Lattakia, Syria' },
-                  { icon: Briefcase, title: 'Inquiry Type', value: 'Group, HTA Qatar, SEC Syria, tenders, projects' },
+                  { icon: Phone, ...text.sections.contactCards[0] },
+                  { icon: Mail, ...text.sections.contactCards[1] },
+                  { icon: MapPin, ...text.sections.contactCards[2] },
+                  { icon: Briefcase, ...text.sections.contactCards[3] },
                 ].map((item) => {
                   const Icon = item.icon;
                   return (
@@ -38,26 +42,26 @@ export default function ContactPage() {
 
             <article className="card soft">
               <div className="card-body">
-                <div className="kicker">Request a Proposal</div>
+                <div className="kicker">{text.sections.requestProposal}</div>
                 <div className="spacer-24" />
                 <div className="form-grid">
-                  <input className="input" placeholder="Full name" />
-                  <input className="input" placeholder="Company name" />
-                  <input className="input" placeholder="Email address" />
-                  <input className="input" placeholder="Phone number" />
+                  <input className="input" placeholder={text.sections.fullName} />
+                  <input className="input" placeholder={text.sections.companyName} />
+                  <input className="input" placeholder={text.sections.emailAddress} />
+                  <input className="input" placeholder={text.sections.phoneNumber} />
                 </div>
                 <div className="spacer-16" />
-                <textarea className="textarea" placeholder="Tell us whether your inquiry is for Sahiony Group, HTA Qatar, or SEC Syria..." />
+                <textarea className="textarea" placeholder={text.sections.inquiryPlaceholder} />
                 <div className="spacer-24" />
                 <button className="btn btn-primary" type="button">
-                  Submit Inquiry <ArrowRight size={16} />
+                  {text.sections.submitInquiry} <ArrowRight size={16} />
                 </button>
               </div>
             </article>
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter lang={lang} />
     </div>
   );
 }

@@ -1,25 +1,44 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { LogoMark } from './logo-mark';
+import { isArabic, type Language, uiText, withLang } from '../lib/i18n';
 
-const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/companies/hta', label: 'HTA Qatar' },
-  { href: '/companies/sec', label: 'SEC Syria' },
-  { href: '/services', label: 'Services' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/contact', label: 'Contact' },
-] as const;
-
-export function SiteHeader() {
+export function SiteHeader({ lang }: { lang: Language }) {
   const [open, setOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const drawerId = 'mobile-nav-drawer';
+  const text = uiText[lang];
+
+  const navItems = [
+    { href: '/', label: text.nav.home },
+    { href: '/about', label: text.nav.about },
+    { href: '/companies/hta', label: text.nav.hta },
+    { href: '/companies/sec', label: text.nav.sec },
+    { href: '/services', label: text.nav.services },
+    { href: '/projects', label: text.nav.projects },
+    { href: '/contact', label: text.nav.contact },
+  ] as const;
+
+  const switchLanguageHref = useMemo(() => {
+    const nextIsArabic = lang === 'en';
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (nextIsArabic) {
+      params.set('lang', 'ar');
+    } else {
+      params.delete('lang');
+    }
+
+    const query = params.toString();
+    return query ? `${pathname}?${query}` : pathname;
+  }, [lang, pathname, searchParams]);
 
   // Keep page content from scrolling while the mobile drawer is open.
   useEffect(() => {
@@ -73,29 +92,38 @@ export function SiteHeader() {
   return (
     <header className="topbar">
       <div className="container topbar-inner">
-        <Link href="/" className="brand">
+        <Link href={withLang('/', lang)} className="brand">
           <LogoMark src="/SEC LOGO SAHIONY.jpg" alt="Sahiony Group" header />
           <div className="brand-meta">
-            <small>Sahiony Group</small>
-            <span>Qatar & Syria Engineering Companies</span>
+            <small>{text.groupName}</small>
+            <span>{text.brandSubtitle}</span>
           </div>
         </Link>
 
         <nav className="nav">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href}>
+            <Link key={item.href} href={withLang(item.href, lang)}>
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <Link href="/contact" className="btn btn-primary desktop-only" style={{ display: open ? 'none' : undefined }}>
-          Request Proposal
+        <div className="header-actions desktop-only" style={{ display: open ? 'none' : undefined }}>
+          <Link href={switchLanguageHref} className="btn btn-secondary lang-toggle" aria-label={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}>
+            {text.switchTo}
+          </Link>
+          <Link href={withLang('/contact', lang)} className="btn btn-primary">
+            {text.ctaProposal}
+          </Link>
+        </div>
+
+        <Link href={switchLanguageHref} className="btn btn-secondary mobile-only lang-toggle-mobile">
+          {text.switchTo}
         </Link>
 
         <button
           ref={toggleButtonRef}
-          aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-label={open ? (isArabic(lang) ? 'إغلاق قائمة التنقل' : 'Close navigation menu') : (isArabic(lang) ? 'فتح قائمة التنقل' : 'Open navigation menu')}
           aria-expanded={open}
           aria-controls={drawerId}
           onClick={() => setOpen((v) => !v)}
@@ -115,26 +143,26 @@ export function SiteHeader() {
         className={`mobile-drawer ${open ? 'open' : ''}`}
         role="dialog"
         aria-modal="true"
-        aria-label="Mobile navigation"
+        aria-label={text.mobileNavLabel}
       >
         <div className="mobile-drawer-header">
-          <h2>Menu</h2>
+          <h2>{text.menu}</h2>
           <button type="button" className="drawer-close-btn" onClick={() => setOpen(false)}>
             <X size={18} aria-hidden="true" />
-            <span>Close</span>
+            <span>{text.close}</span>
           </button>
         </div>
 
-        <nav className="mobile-drawer-nav" aria-label="Mobile site navigation">
+        <nav className="mobile-drawer-nav" aria-label={text.mobileNavLabel}>
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
+            <Link key={item.href} href={withLang(item.href, lang)} onClick={() => setOpen(false)}>
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <Link href="/contact" className="btn btn-primary mobile-drawer-cta" onClick={() => setOpen(false)}>
-          Request Proposal
+        <Link href={withLang('/contact', lang)} className="btn btn-primary mobile-drawer-cta" onClick={() => setOpen(false)}>
+          {text.ctaProposal}
         </Link>
       </aside>
     </header>

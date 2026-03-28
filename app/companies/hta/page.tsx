@@ -1,6 +1,8 @@
 import { CompanyDetailPage } from '../../../components/company-detail-page';
-import { companies } from '../../../lib/site-data';
+import { getLocalizedSiteData, resolveLanguage, type SearchParams } from '../../../lib/i18n';
 
-export default function HtaPage() {
-  return <CompanyDetailPage company={companies[0]} />;
+export default async function HtaPage({ searchParams }: { searchParams?: Promise<SearchParams> }) {
+  const lang = resolveLanguage(await searchParams);
+  const { companies } = getLocalizedSiteData(lang);
+  return <CompanyDetailPage company={companies[0]} lang={lang} />;
 }

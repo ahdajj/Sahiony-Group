@@ -1,23 +1,26 @@
 import { LogoMark } from './logo-mark';
+import { type Language, uiText, withLang } from '../lib/i18n';
 
-export function SiteFooter() {
+export function SiteFooter({ lang }: { lang: Language }) {
+  const text = uiText[lang];
+
   return (
     <footer className="footer">
       <div className="container footer-inner">
         <div className="brand">
           <LogoMark src="/SEC LOGO SAHIONY.jpg" alt="Sahiony Group" />
           <div>
-            <div className="kicker">Sahiony Group</div>
-            <div className="footer-note">Engineering and contracting excellence across Qatar and Syria.</div>
+            <div className="kicker">{text.groupName}</div>
+            <div className="footer-note">{text.footer.note}</div>
           </div>
         </div>
         <div className="pill-row">
-          <a href="/about" className="pill">About</a>
-          <a href="/companies/hta" className="pill">HTA Qatar</a>
-          <a href="/companies/sec" className="pill">SEC Syria</a>
-          <a href="/services" className="pill">Services</a>
-          <a href="/projects" className="pill">Projects</a>
-          <a href="/contact" className="pill">Contact</a>
+          <a href={withLang('/about', lang)} className="pill">{text.nav.about}</a>
+          <a href={withLang('/companies/hta', lang)} className="pill">{text.nav.hta}</a>
+          <a href={withLang('/companies/sec', lang)} className="pill">{text.nav.sec}</a>
+          <a href={withLang('/services', lang)} className="pill">{text.nav.services}</a>
+          <a href={withLang('/projects', lang)} className="pill">{text.nav.projects}</a>
+          <a href={withLang('/contact', lang)} className="pill">{text.nav.contact}</a>
         </div>
       </div>
     </footer>

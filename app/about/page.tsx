@@ -1,18 +1,22 @@
 import { SectionTitle } from '../../components/section-title';
 import { SiteFooter } from '../../components/site-footer';
 import { SiteHeader } from '../../components/site-header';
-import { groupHighlights, valueProps } from '../../lib/site-data';
+import { getLocalizedSiteData, resolveLanguage, uiText, type SearchParams } from '../../lib/i18n';
 
-export default function AboutPage() {
+export default async function AboutPage({ searchParams }: { searchParams?: Promise<SearchParams> }) {
+  const lang = resolveLanguage(await searchParams);
+  const text = uiText[lang];
+  const { groupHighlights, valueProps } = getLocalizedSiteData(lang);
+
   return (
-    <div className="page-shell">
-      <SiteHeader />
+    <div className="page-shell" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+      <SiteHeader lang={lang} />
       <main>
         <section className="container section">
           <SectionTitle
-            eyebrow="About the Group"
-            title="Sahiony Group"
-            description="A cross-market engineering umbrella connecting Qatar execution capability with Syria contracting and reconstruction positioning."
+            eyebrow={text.about.eyebrow}
+            title={text.about.title}
+            description={text.about.description}
           />
           <div className="spacer-32" />
           <div className="grid-2">
@@ -37,7 +41,7 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter lang={lang} />
     </div>
   );
 }

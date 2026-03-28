@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Cinzel, Manrope } from 'next/font/google';
+import { Cinzel, Manrope, Noto_Kufi_Arabic } from 'next/font/google';
 import './globals.css';
 
 const manrope = Manrope({
@@ -14,6 +14,12 @@ const cinzel = Cinzel({
   display: 'swap',
 });
 
+const notoKufiArabic = Noto_Kufi_Arabic({
+  subsets: ['arabic'],
+  variable: '--font-arabic',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: 'Sahiony Group',
   description: 'Sahiony Group - HTA Construction & Trading in Qatar and SEC Engineering & Contracting in Syria.',
@@ -22,7 +28,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} ${cinzel.variable}`}>{children}</body>
+      <body className={`${manrope.variable} ${cinzel.variable} ${notoKufiArabic.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
