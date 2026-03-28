@@ -1,0 +1,917 @@
+:root {
+  --ink: #101223;
+  --steel: #2f3242;
+  --gold: #f2b11f;
+  --navy: #202a6a;
+  --mist: #f1f3f7;
+  --white: #ffffff;
+  --line: rgba(18, 23, 46, 0.14);
+  --soft-shadow: 0 20px 60px rgba(16, 18, 35, 0.18);
+  --card-shadow: 0 12px 40px rgba(18, 23, 46, 0.1);
+  --font-body: "Manrope", sans-serif;
+  --font-display: "Cinzel", serif;
+  --font-ar: "Tajawal", "Noto Sans Arabic", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(242, 177, 31, 0.2), transparent 35%),
+    radial-gradient(circle at 90% 20%, rgba(32, 42, 106, 0.18), transparent 40%),
+    var(--mist);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+html[lang="ar"] body {
+  font-family: var(--font-ar);
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 95%);
+  pointer-events: none;
+  opacity: 0.38;
+  z-index: -3;
+}
+
+.bg-glow {
+  position: fixed;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.bg-glow-left {
+  background: rgba(242, 177, 31, 0.28);
+  left: -10vw;
+  top: 15vh;
+}
+
+.bg-glow-right {
+  background: rgba(32, 42, 106, 0.24);
+  right: -12vw;
+  top: 28vh;
+}
+
+.site-header {
+  position: sticky;
+  top: 16px;
+  margin: 16px auto;
+  width: min(1160px, calc(100% - 32px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(16, 18, 35, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  z-index: 40;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.brand-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: 0.95rem;
+}
+
+html[lang="ar"] .brand-text {
+  font-family: var(--font-ar);
+  letter-spacing: 0;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--steel);
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: color 220ms ease;
+}
+
+.main-nav a:hover {
+  color: var(--navy);
+}
+
+.header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 18, 35, 0.15);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.lang-btn {
+  border: 0;
+  background: transparent;
+  color: var(--steel);
+  font-weight: 800;
+  font-size: 0.76rem;
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.lang-btn.active {
+  background: rgba(32, 42, 106, 0.9);
+  color: #ffffff;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--gold), #f7cd5a);
+  color: #1a1a1a;
+  box-shadow: 0 8px 24px rgba(242, 177, 31, 0.36);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(242, 177, 31, 0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--navy);
+  border-color: rgba(32, 42, 106, 0.38);
+  box-shadow: none;
+}
+
+.btn-small {
+  padding: 9px 16px;
+  font-size: 0.86rem;
+}
+
+main {
+  width: min(1160px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  gap: 80px;
+}
+
+.hero {
+  margin-top: 46px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin: 0;
+  padding: 6px 12px;
+  background: rgba(32, 42, 106, 0.1);
+  color: var(--navy);
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 16px 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1.03;
+  max-width: 12ch;
+}
+
+html[lang="ar"] .hero h1,
+html[lang="ar"] .section-heading h2,
+html[lang="ar"] .pillars h3,
+html[lang="ar"] .services h3,
+html[lang="ar"] .projects h3,
+html[lang="ar"] .qhse h3,
+html[lang="ar"] .contact-card h2,
+html[lang="ar"] .stats h3 {
+  font-family: var(--font-ar);
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--navy);
+}
+
+.lead {
+  margin: 0;
+  max-width: 58ch;
+  color: #3a4055;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 14px;
+}
+
+.hero-visual {
+  position: relative;
+  min-height: 440px;
+  display: grid;
+  place-items: center;
+  overflow: visible;
+}
+
+.hero-logo {
+  width: min(620px, 100%);
+  max-height: 70vh;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 34px rgba(16, 18, 35, 0.2));
+  animation: floatLogo 5s ease-in-out infinite;
+}
+
+.orbital-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+  pointer-events: none;
+}
+
+.ring-1 {
+  width: 480px;
+  height: 480px;
+  border-color: rgba(32, 42, 106, 0.24);
+  animation: spin 20s linear infinite;
+}
+
+.ring-2 {
+  width: 410px;
+  height: 410px;
+  border-color: rgba(242, 177, 31, 0.32);
+  animation: spin 14s linear infinite reverse;
+}
+
+.ring-3 {
+  width: 350px;
+  height: 350px;
+  border-color: rgba(16, 18, 35, 0.2);
+  animation: spin 10s linear infinite;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stats article {
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(16, 18, 35, 0.09);
+  box-shadow: var(--card-shadow);
+}
+
+.stats h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  color: var(--navy);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.stats p {
+  margin: 8px 0 0;
+  color: #3e455e;
+  font-size: 0.95rem;
+}
+
+section {
+  scroll-margin-top: 110px;
+}
+
+.section-heading h2 {
+  margin: 12px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.6vw, 2.8rem);
+  line-height: 1.2;
+}
+
+.about-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.about-grid p {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(16, 18, 35, 0.08);
+  border-radius: 14px;
+  padding: 24px;
+  line-height: 1.9;
+  color: #2f3347;
+}
+
+.pillars {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.pillars article {
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.68));
+  border: 1px solid rgba(16, 18, 35, 0.08);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.pillars h3,
+.services h3,
+.projects h3,
+.qhse h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+}
+
+.pillars p,
+.card p,
+.qhse p,
+.project-highlight p {
+  margin: 0;
+  color: #39405b;
+  line-height: 1.78;
+}
+
+.services-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(16, 18, 35, 0.1);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: var(--card-shadow);
+  transition: transform 280ms ease, border-color 280ms ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(32, 42, 106, 0.28);
+}
+
+.project-highlight {
+  margin-top: 24px;
+  padding: 28px;
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(32, 42, 106, 0.92), rgba(16, 18, 35, 0.92)),
+    url("assets/img/logo-icon.png");
+  background-repeat: no-repeat;
+  background-position: 95% center;
+  background-size: 160px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: var(--soft-shadow);
+}
+
+.project-highlight h3,
+.project-highlight p {
+  color: var(--white);
+}
+
+.project-highlight .btn {
+  flex: 0 0 auto;
+}
+
+.qhse-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.qhse-grid article {
+  border-radius: 16px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(16, 18, 35, 0.1);
+  box-shadow: var(--card-shadow);
+}
+
+.contact {
+  margin-bottom: 40px;
+}
+
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 42px;
+  background: linear-gradient(140deg, #0f1326, #1c255f 52%, #27327a 100%);
+  color: var(--white);
+  box-shadow: var(--soft-shadow);
+}
+
+.contact-card::after {
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  background: rgba(242, 177, 31, 0.16);
+  /* logical property: right in LTR, left in RTL — no per-dir override needed */
+  inset-inline-end: -110px;
+  bottom: -120px;
+}
+
+.contact-logo {
+  max-width: 260px;
+  width: 100%;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.contact-card h2 {
+  margin: 10px 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.contact-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-lines {
+  margin-top: 20px;
+  display: grid;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-lines a,
+.contact-lines p {
+  color: rgba(255, 255, 255, 0.93);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.site-footer {
+  padding: 10px 16px 28px;
+  text-align: center;
+  color: #4a526f;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════
+   RTL / Arabic layout fixes
+   Uses [dir="rtl"] to match both html and body elements,
+   since the JS sets direction on both.
+   ═══════════════════════════════════════════════════ */
+
+/* 1. Base direction + text alignment */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* 2. Arabic script must never have letter-spacing — it breaks
+   the cursive connections between characters */
+[dir="rtl"] .eyebrow {
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .btn {
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .section-heading h2 {
+  letter-spacing: 0;
+}
+
+/* 3. Arabic body text needs more vertical breathing room */
+[dir="rtl"] .lead {
+  line-height: 2;
+}
+
+[dir="rtl"] .about-grid p,
+[dir="rtl"] .pillars p,
+[dir="rtl"] .card p,
+[dir="rtl"] .qhse-grid article p,
+[dir="rtl"] .project-highlight p,
+[dir="rtl"] .stats p,
+[dir="rtl"] .contact-card p {
+  line-height: 2;
+}
+
+/* 4. Prevent Arabic words from causing horizontal overflow */
+[dir="rtl"] p,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* 5. Hero heading — remove the ch-based width cap; Arabic words
+   are longer phonetically and will overflow a tight 12ch box */
+[dir="rtl"] .hero h1 {
+  max-width: none;
+}
+
+/* 6. Header: set direction so flex items render R→L */
+[dir="rtl"] .site-header {
+  direction: rtl;
+}
+
+[dir="rtl"] .main-nav {
+  direction: rtl;
+}
+
+/* Mobile dropdown: align links to the inline-start (= right in RTL) */
+[dir="rtl"] .main-nav a {
+  text-align: right;
+}
+
+/* 7. Hero two-column grid: add direction:rtl so the CSS grid
+   renders columns right-to-left, placing hero-copy on the RIGHT
+   (reading start) and hero-visual on the LEFT — no DOM reorder needed.
+   Keep the same 1.1fr/0.9fr proportions as LTR; direction handles swap. */
+[dir="rtl"] .hero {
+  direction: rtl;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+/* Restore normal content direction inside hero children so text
+   inside them follows inline flow correctly */
+[dir="rtl"] .hero-copy,
+[dir="rtl"] .hero-visual {
+  direction: ltr;
+  text-align: right;
+}
+
+[dir="rtl"] .hero-copy .eyebrow {
+  direction: rtl;
+}
+
+[dir="rtl"] .hero-copy h1,
+[dir="rtl"] .hero-copy .lead {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .hero-actions {
+  direction: rtl;
+  justify-content: flex-start;
+}
+
+/* 8. Project highlight: move decorative logo image to the left */
+[dir="rtl"] .project-highlight {
+  background-position: 5% center;
+}
+
+/* 9. Stats counter numbers: keep numerals LTR (Arabic-Indic is handled
+   by JS via toLocaleString) but align card text to right */
+[dir="rtl"] .stats article {
+  text-align: right;
+}
+
+/* 10. Section headings alignment */
+[dir="rtl"] .section-heading {
+  text-align: right;
+}
+
+/* ── Hamburger toggle (hidden on desktop) ───────── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid rgba(16, 18, 35, 0.15);
+  border-radius: 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--steel);
+  border-radius: 2px;
+  transition: transform 280ms ease, opacity 280ms ease;
+}
+
+.site-header.nav-open .nav-toggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.site-header.nav-open .nav-toggle span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.site-header.nav-open .nav-toggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatLogo {
+  0%,
+  100% {
+    transform: translateY(-24px);
+  }
+  50% {
+    transform: translateY(24px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    min-height: 360px;
+  }
+
+  .hero-logo {
+    width: min(560px, 100%);
+    max-height: 56vh;
+  }
+
+  .stats,
+  .services-grid,
+  .qhse-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-highlight {
+    flex-direction: column;
+    align-items: flex-start;
+    /* LTR: logo peeks from bottom-right */
+    background-position: right bottom;
+  }
+
+  /* In RTL at tablet the hero collapses to 1 column — reset direction
+     so hero-copy stacks on top of hero-visual in natural DOM order */
+  [dir="rtl"] .hero {
+    direction: ltr;
+  }
+
+  /* Project highlight: flip decorative logo to bottom-left in RTL */
+  [dir="rtl"] .project-highlight {
+    background-position: left bottom;
+    align-items: flex-end;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    top: 10px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .nav-toggle {
+    display: flex;
+    /* logical: pushes toggle to the inline-end edge in both LTR and RTL */
+    margin-inline-start: auto;
+  }
+
+  .header-actions {
+    order: 0;
+  }
+
+  .header-actions .btn-small {
+    display: none;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(16, 18, 35, 0.1);
+    border-radius: 16px;
+    padding: 10px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 40px rgba(18, 23, 46, 0.15);
+    z-index: 50;
+  }
+
+  .site-header.nav-open .main-nav {
+    display: flex;
+  }
+
+  .main-nav a {
+    padding: 12px 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(16, 18, 35, 0.06);
+  }
+
+  .main-nav a:last-child {
+    border-bottom: none;
+  }
+
+  .main-nav a:hover {
+    background: rgba(32, 42, 106, 0.06);
+    color: var(--navy);
+  }
+
+  main {
+    gap: 48px;
+  }
+
+  .hero {
+    margin-top: 24px;
+    gap: 20px;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+
+  .hero-visual {
+    min-height: 280px;
+  }
+
+  .ring-1 {
+    width: 78vw;
+    height: 78vw;
+    max-width: 360px;
+    max-height: 360px;
+  }
+
+  .ring-2 {
+    width: 66vw;
+    height: 66vw;
+    max-width: 305px;
+    max-height: 305px;
+  }
+
+  .ring-3 {
+    width: 56vw;
+    height: 56vw;
+    max-width: 260px;
+    max-height: 260px;
+  }
+
+  .hero-logo {
+    width: min(94vw, 560px);
+    max-height: 44vh;
+  }
+
+  .stats,
+  .about-grid,
+  .pillars,
+  .services-grid,
+  .qhse-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    padding: 28px 20px;
+  }
+
+  .project-highlight {
+    flex-direction: column;
+    align-items: flex-start;
+    background-position: right bottom;
+  }
+
+  /* RTL mobile: site-header direction already set; ensure toggle
+     stays at the inline-end (visual right in LTR, visual left in RTL) */
+  [dir="rtl"] .main-nav a {
+    text-align: right;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  [dir="rtl"] .project-highlight {
+    align-items: flex-end;
+    background-position: left bottom;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-visual {
+    min-height: 240px;
+  }
+
+  .hero-logo {
+    max-height: 36vh;
+  }
+
+  main {
+    gap: 40px;
+  }
+
+  .contact-card {
+    padding: 22px 16px;
+  }
+
+  .contact-card::after {
+    width: 200px;
+    height: 200px;
+    bottom: -90px;
+    /* inset-inline-end handles LTR/RTL automatically */
+    inset-inline-end: -80px;
+  }
+}
