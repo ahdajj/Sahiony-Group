@@ -109,18 +109,21 @@ export function SiteHeader({ lang }: { lang: Language }) {
         </nav>
 
         <div className="header-actions" style={{ display: open ? 'none' : undefined }}>
-          <Link
-            href={switchLanguageHref}
-            className={`lang-switch ${lang === 'ar' ? 'is-ar' : ''}`}
-            aria-label={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}
-            title={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}
-          >
+          <div className={`lang-switch ${lang === 'ar' ? 'is-ar' : ''}`} role="group" aria-label="Language selector">
             <span className="lang-switch-track">
               <span className="lang-switch-thumb" aria-hidden="true" />
-              <span className="lang-switch-label lang-en" aria-hidden="true">English</span>
-              <span className="lang-switch-label lang-ar" aria-hidden="true">العربية</span>
+              {lang === 'en' ? (
+                <span className="lang-switch-label lang-en" aria-current="true">English</span>
+              ) : (
+                <Link href={switchLanguageHref} className="lang-switch-label lang-en">English</Link>
+              )}
+              {lang === 'ar' ? (
+                <span className="lang-switch-label lang-ar" aria-current="true">العربية</span>
+              ) : (
+                <Link href={switchLanguageHref} className="lang-switch-label lang-ar">العربية</Link>
+              )}
             </span>
-          </Link>
+          </div>
           <Link href={withLang('/contact', lang)} className="btn btn-primary desktop-only">
             {text.ctaProposal}
           </Link>
@@ -167,19 +170,21 @@ export function SiteHeader({ lang }: { lang: Language }) {
         </nav>
 
         <div className="mobile-drawer-actions">
-          <Link
-            href={switchLanguageHref}
-            className={`lang-switch mobile-lang-switch ${lang === 'ar' ? 'is-ar' : ''}`}
-            aria-label={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}
-            title={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}
-            onClick={() => setOpen(false)}
-          >
+          <div className={`lang-switch mobile-lang-switch ${lang === 'ar' ? 'is-ar' : ''}`} role="group" aria-label="Language selector">
             <span className="lang-switch-track">
               <span className="lang-switch-thumb" aria-hidden="true" />
-              <span className="lang-switch-label lang-en" aria-hidden="true">English</span>
-              <span className="lang-switch-label lang-ar" aria-hidden="true">العربية</span>
+              {lang === 'en' ? (
+                <span className="lang-switch-label lang-en" aria-current="true">English</span>
+              ) : (
+                <Link href={switchLanguageHref} className="lang-switch-label lang-en" onClick={() => setOpen(false)}>English</Link>
+              )}
+              {lang === 'ar' ? (
+                <span className="lang-switch-label lang-ar" aria-current="true">العربية</span>
+              ) : (
+                <Link href={switchLanguageHref} className="lang-switch-label lang-ar" onClick={() => setOpen(false)}>العربية</Link>
+              )}
             </span>
-          </Link>
+          </div>
         </div>
 
         <Link href={withLang('/contact', lang)} className="btn btn-primary mobile-drawer-cta" onClick={() => setOpen(false)}>
