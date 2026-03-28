@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="QHSE standards of SEC Sahiony Engineering & Contracting." />
+  <title>QHSE | SEC Sahiony</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-left" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-right" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-icon.png" alt="SEC icon" class="brand-icon" />
+      <span class="brand-text" data-i18n="brandText">SEC Sahiony</span>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html" data-i18n="navHome">Home</a>
+      <a href="about.html" data-i18n="navAbout">About</a>
+      <a href="services.html" data-i18n="navServices">Services</a>
+      <a href="projects.html" data-i18n="navProjects">Projects</a>
+      <a href="qhse.html" data-i18n="navQhse">QHSE</a>
+      <a href="contact.html" data-i18n="navContact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Language switcher">
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="ar">عربي</button>
+      </div>
+      <a class="btn btn-small" href="contact.html" data-i18n="headerCta">Start a Project</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="qhse reveal" id="qhse">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="qhseEyebrow">Standards</p>
+        <h2 data-i18n="qhseTitle">Quality, Health, Safety, and Environmental Commitment</h2>
+      </div>
+      <div class="qhse-grid">
+        <article>
+          <h3 data-i18n="qhseOneTitle">Quality-Driven Process</h3>
+          <p data-i18n="qhseOneBody">System-based management and documented procedures for design, procurement, installation, commissioning, and maintenance quality.</p>
+        </article>
+        <article>
+          <h3 data-i18n="qhseTwoTitle">Safety-First Culture</h3>
+          <p data-i18n="qhseTwoBody">SEC prioritizes incident prevention through training, supervision accountability, and safe execution at every work level.</p>
+        </article>
+        <article>
+          <h3 data-i18n="qhseThreeTitle">Responsible Delivery</h3>
+          <p data-i18n="qhseThreeBody">The company is committed to protecting people and environment while meeting applicable project and regulatory requirements.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> <span data-i18n="footerText">SEC Sahiony Engineering & Contracting. All rights reserved.</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

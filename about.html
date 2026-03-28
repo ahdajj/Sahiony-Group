@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About SEC Sahiony Engineering & Contracting." />
+  <title>About | SEC Sahiony</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-left" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-right" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-icon.png" alt="SEC icon" class="brand-icon" />
+      <span class="brand-text" data-i18n="brandText">SEC Sahiony</span>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html" data-i18n="navHome">Home</a>
+      <a href="about.html" data-i18n="navAbout">About</a>
+      <a href="services.html" data-i18n="navServices">Services</a>
+      <a href="projects.html" data-i18n="navProjects">Projects</a>
+      <a href="qhse.html" data-i18n="navQhse">QHSE</a>
+      <a href="contact.html" data-i18n="navContact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Language switcher">
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="ar">عربي</button>
+      </div>
+      <a class="btn btn-small" href="contact.html" data-i18n="headerCta">Start a Project</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="about reveal" id="about">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="aboutEyebrow">Who We Are</p>
+        <h2 data-i18n="aboutTitle">From Regional Contracting Roots to Multi-Disciplinary Delivery</h2>
+      </div>
+      <div class="about-grid">
+        <p data-i18n="aboutBodyOne">SEC, an affiliate of Sahiony Group Co. W.L.L., has grown from a trusted contracting base into a full-scale engineering organization focused on design, supply, installation, testing, commissioning, and maintenance.</p>
+        <p data-i18n="aboutBodyTwo">The company operates with a continuous quality mindset and a customer-first culture, delivering project outcomes across civil works, MEP systems, and building renovation scopes.</p>
+      </div>
+      <div class="pillars">
+        <article>
+          <h3 data-i18n="visionTitle">Vision</h3>
+          <p data-i18n="visionBody">Serve at the highest standards and stay ahead of future industry challenges.</p>
+        </article>
+        <article>
+          <h3 data-i18n="missionTitle">Mission</h3>
+          <p data-i18n="missionBody">Achieve customer satisfaction through a continuous quality process and trusted execution.</p>
+        </article>
+        <article>
+          <h3 data-i18n="goalTitle">Goal</h3>
+          <p data-i18n="goalBody">Create a culture where every associate drives constant improvement.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> <span data-i18n="footerText">SEC Sahiony Engineering & Contracting. All rights reserved.</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
