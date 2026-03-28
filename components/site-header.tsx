@@ -166,6 +166,22 @@ export function SiteHeader({ lang }: { lang: Language }) {
           ))}
         </nav>
 
+        <div className="mobile-drawer-actions">
+          <Link
+            href={switchLanguageHref}
+            className={`lang-switch mobile-lang-switch ${lang === 'ar' ? 'is-ar' : ''}`}
+            aria-label={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}
+            title={lang === 'en' ? 'Switch to Arabic' : 'Switch to English'}
+            onClick={() => setOpen(false)}
+          >
+            <span className="lang-switch-track">
+              <span className="lang-switch-thumb" aria-hidden="true" />
+              <span className="lang-switch-label lang-en" aria-hidden="true">English</span>
+              <span className="lang-switch-label lang-ar" aria-hidden="true">العربية</span>
+            </span>
+          </Link>
+        </div>
+
         <Link href={withLang('/contact', lang)} className="btn btn-primary mobile-drawer-cta" onClick={() => setOpen(false)}>
           {text.ctaProposal}
         </Link>
