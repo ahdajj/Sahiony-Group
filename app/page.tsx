@@ -18,6 +18,7 @@ import { ProjectCard } from '../components/project-card';
 import { SectionTitle } from '../components/section-title';
 import { SiteFooter } from '../components/site-footer';
 import { SiteHeader } from '../components/site-header';
+import {Heroarea} from '../components/Hero-area'
 import { getLocalizedSiteData, resolveLanguage, uiText, withLang, type SearchParams } from '../lib/i18n';
 
 export default async function HomePage({ searchParams }: { searchParams?: Promise<SearchParams> }) {
@@ -38,8 +39,9 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
   return (
     <div className="page-shell" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <SiteHeader lang={lang} />
+      <Heroarea lang={lang}/>
       <main>
-        <section className="container hero">
+        <section className="container hero" id='container-hero'>
           <div style={{ display: 'grid', gap: 24 }}>
             <span className="badge">{text.hero.badge}</span>
             <h1>{text.hero.title}</h1>

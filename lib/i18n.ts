@@ -453,3 +453,18 @@ export const uiText = {
     },
   },
 } as const;
+
+export const HeroText ={
+  en :{
+    groupName: 'Sahiony Group',
+    brandSubtitle: 'Qatar & Syria Engineering Companies',
+    Greeting:'Welcome',
+    Herobutton:'Explore Properties'
+  },
+  ar:{
+    groupName:'مجموعة صهيوني',
+    brandSubtitle: 'شركات هندسية في قطر وسوريا',
+    Greeting:"مرحبا",
+    Herobutton:"اكتشف خدماتنا"
+  }
+}as const
