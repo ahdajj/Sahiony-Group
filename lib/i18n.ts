@@ -304,9 +304,9 @@ export const uiText = {
       groupContactTitle: 'One inquiry point with routing for HTA Qatar and SEC Syria.',
       groupContactDesc: 'The contact experience should feel unified at group level while still letting users choose the relevant company.',
       contactCards: [
-        { title: 'Phone', value: '+963 933 33 5671 / +974 5517 7960' },
-        { title: 'Email', value: 'info@htaqatar.com / gm@htaqatar.com / anas@htaqatar.com' },
-        { title: 'Offices', value: 'Doha, Qatar / Lattakia, Syria' },
+        { title: 'Phone', value: 'Syria +963 933 33 5671\nQatar +974 5517 7960' },
+        { title: 'Email', value: 'info@htaqatar.com\ngm@htaqatar.com\nanas@htaqatar.com' },
+        { title: 'Offices', value: 'Doha, Qatar\nLattakia, Syria' },
         { title: 'Inquiry Type', value: 'Group, HTA Qatar, SEC Syria, tenders, projects' },
       ],
       requestProposal: 'Request a Proposal',
