@@ -18,11 +18,10 @@ export function SiteHeader({ lang }: { lang: Language }) {
 
   const navItems = [
     { href: '/', label: text.nav.home },
-    { href: '/about', label: text.nav.about },
     { href: '/companies/hta', label: text.nav.hta },
     { href: '/companies/sec', label: text.nav.sec },
     { href: '/services', label: text.nav.services },
-    { href: '/projects', label: text.nav.projects },
+    { href: '/about', label: text.nav.about },
     { href: '/contact', label: text.nav.contact },
   ] as const;
 

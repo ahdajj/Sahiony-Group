@@ -299,7 +299,7 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
                         <div className="spacer-16" />
                         <strong>{item.title}</strong>
                         <div className="spacer-16" />
-                        <span className="subtle" style={{ lineHeight: 1.8 }}>{item.value}</span>
+                        <span className="subtle" style={{ lineHeight: 1.8, whiteSpace: 'pre-line' }}>{item.value}</span>
                       </div>
                     </article>
                   );
