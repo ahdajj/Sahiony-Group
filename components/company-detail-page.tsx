@@ -3,11 +3,14 @@ import { LogoMark } from './logo-mark';
 import { SectionTitle } from './section-title';
 import { SiteFooter } from './site-footer';
 import { SiteHeader } from './site-header';
+import { ProjectCard } from './project-card';
 import { type Language, uiText } from '../lib/i18n';
+import { getLocalizedSiteData} from '../lib/i18n'
 
 export function CompanyDetailPage({ company, lang }: { company: Company; lang: Language }) {
   const Icon = company.icon;
   const text = uiText[lang];
+  const { featuredProjects } = getLocalizedSiteData(lang);
 
   return (
     <div className="page-shell" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
@@ -33,16 +36,14 @@ export function CompanyDetailPage({ company, lang }: { company: Company; lang: L
               </article>
             ))}
           </div>
-
-          <div className="card" style={{ marginTop: 32 }}>
-            <div className="card-body">
-              <div className="kicker">{text.sections.plannedPages}</div>
-              <div className="pill-row" style={{ marginTop: 14 }}>
-                {company.pages.map((page) => (
-                  <span key={page} className="pill gold">{page}</span>
-                ))}
-              </div>
-            </div>
+        </section>
+        <section className="container section">
+          <SectionTitle eyebrow={text.projectsPage.eyebrow} title={text.projectsPage.title} description={text.projectsPage.description} />
+          <div className="spacer-32" />
+          <div className="grid-3">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.title} title={project.title} category={project.category} summary={project.summary} lang={lang} />
+            ))}
           </div>
         </section>
       </main>
