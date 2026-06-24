@@ -19,7 +19,6 @@ export function SiteFooter({ lang }: { lang: Language }) {
           <a href={withLang('/companies/hta', lang)} className="pill">{text.nav.hta}</a>
           <a href={withLang('/companies/sec', lang)} className="pill">{text.nav.sec}</a>
           <a href={withLang('/services', lang)} className="pill">{text.nav.services}</a>
-          <a href={withLang('/projects', lang)} className="pill">{text.nav.projects}</a>
           <a href={withLang('/contact', lang)} className="pill">{text.nav.contact}</a>
         </div>
       </div>
