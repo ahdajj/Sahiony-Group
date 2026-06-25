@@ -7,8 +7,10 @@ import {
   siteMap as siteMapEn,
   stats as statsEn,
   systems as systemsEn,
+  type FeaturedProjectsData,
   valueProps as valuePropsEn,
 } from './site-data';
+
 
 export type Language = 'en' | 'ar';
 
@@ -16,6 +18,12 @@ export type SearchParams = {
   lang?: string | string[];
 };
 
+// export type ProjectParams = {
+//   slug?: string;
+// };
+// export function resolveProject (params?:ProjectParams ) {
+//   return params.value.slug
+// }
 export function resolveLanguage(searchParams?: SearchParams): Language {
   const raw = Array.isArray(searchParams?.lang) ? searchParams?.lang[0] : searchParams?.lang;
   return raw === 'ar' ? 'ar' : 'en';
@@ -130,7 +138,7 @@ const servicesAr = servicesEn.map((service, index) => {
   };
 });
 
-const featuredProjectsAr = featuredProjectsEn.map((project, index) => {
+const featuredProjectsHtaAr = featuredProjectsEn.hta.map((project, index) => {
   const text = [
     {
       title: 'خبرات مشاريع المجموعة في قطر',
@@ -159,6 +167,40 @@ const featuredProjectsAr = featuredProjectsEn.map((project, index) => {
     summary: text.summary,
   };
 });
+
+const featuredProjectsSECAr = featuredProjectsEn.sec.map((project, index) => {
+  const text = [
+    {
+      title: 'خبرات مشاريع المجموعة في قطر',
+      category: 'HTA / قطر',
+      summary:
+        'فرع مشاريع مخصص لـ HTA لعرض المراجع في قطر ضمن مشاريع سكنية وتجارية وصحية وبنية تحتية.',
+    },
+    {
+      title: 'مشروع كشك اللاذقية',
+      category: 'SEC / سوريا',
+      summary:
+        'عنصر من أعمال SEC في سوريا ليكون نقطة ارتكاز لعرض المشاريع المحلية ضمن هيكل موقع المجموعة.',
+    },
+    {
+      title: 'محفظة مشاريع التأهيل المؤسسي',
+      category: 'SEC / سوريا',
+      summary:
+        'فئة مشاريع مستقبلية لعرض أعمال تأهيل المساجد والمدارس والقطاع العام ضمن ملف SEC.',
+    },
+  ][index];
+
+  return {
+    ...project,
+    title: text.title,
+    category: text.category,
+    summary: text.summary,
+  };
+});
+const featuredProjectsAr: FeaturedProjectsData = {
+  hta: featuredProjectsHtaAr,
+  sec: featuredProjectsSECAr,
+};
 
 const systemsAr = [
   'المقاولات العامة والتأهيل',
@@ -209,7 +251,28 @@ const valuePropsAr = valuePropsEn.map((item, index) => {
   };
 });
 
-export function getLocalizedSiteData(lang: Language) {
+type LocalizedSiteData = {
+  stats: ReadonlyArray<{ value: string; label: string }>;
+  groupHighlights: ReadonlyArray<string>;
+  companies: typeof companiesEn;
+  services: ReadonlyArray<{
+    title: string;
+    icon: (typeof servicesEn)[number]['icon'];
+    description: string;
+    bullets: ReadonlyArray<string>;
+  }>;
+  featuredProjects: FeaturedProjectsData;
+  systems: ReadonlyArray<string>;
+  brands: ReadonlyArray<string>;
+  siteMap: ReadonlyArray<{ title: string; description: string }>;
+  valueProps: ReadonlyArray<{
+    title: string;
+    description: string;
+    icon: (typeof valuePropsEn)[number]['icon'];
+  }>;
+};
+
+export function getLocalizedSiteData(lang: Language): LocalizedSiteData {
   if (lang === 'ar') {
     return {
       stats: statsAr,

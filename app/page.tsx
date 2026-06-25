@@ -35,6 +35,7 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
     systems,
     valueProps,
   } = getLocalizedSiteData(lang);
+  const allFeaturedProjects = [...featuredProjects.hta, ...featuredProjects.sec];
 
   return (
     <div className="page-shell" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
@@ -172,8 +173,8 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
           />
           <div className="spacer-32" />
           <div className="grid-3">
-            {featuredProjects.map((project) => (
-              <ProjectCard key={project.title} title={project.title} category={project.category} summary={project.summary} lang={lang} />
+            {allFeaturedProjects.map((project, index) => (
+              <ProjectCard key={project.title} title={project.title} category={project.category} summary={project.summary} lang={lang} slug={project.slug} />
             ))}
           </div>
         </section>

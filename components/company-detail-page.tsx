@@ -11,13 +11,14 @@ export function CompanyDetailPage({ company, lang }: { company: Company; lang: L
   const Icon = company.icon;
   const text = uiText[lang];
   const { featuredProjects } = getLocalizedSiteData(lang);
-  let companyfeaturedProjects =[]
 
+    /// finding certain company projects 
+  let companyfeaturedProjects =[]
   if (company.id === 'hta'){
-     companyfeaturedProjects = featuredProjects.filter((item)=>item.category.includes('HTA'))
+     companyfeaturedProjects = [...featuredProjects.hta]
   }
   else {
-     companyfeaturedProjects = featuredProjects.filter((item)=>item.category.includes('SEC'))
+     companyfeaturedProjects = [...featuredProjects.sec]
   }
 
   return (
@@ -49,8 +50,8 @@ export function CompanyDetailPage({ company, lang }: { company: Company; lang: L
           <SectionTitle eyebrow={text.projectsPage.eyebrow} title={text.projectsPage.title} description={text.projectsPage.description} />
           <div className="spacer-32" />
           <div className="grid-3">
-            {companyfeaturedProjects.map((project) => (
-              <ProjectCard key={project.title} title={project.title} category={project.category} summary={project.summary} lang={lang} />
+            {companyfeaturedProjects.map((project ,index) => (
+              <ProjectCard key={project.title} title={project.title} category={project.category} summary={project.summary} lang={lang} slug={project.slug} />
             ))}
           </div>
         </section>

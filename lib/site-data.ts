@@ -116,26 +116,45 @@ export const services = [
   },
 ] as const;
 
-export const featuredProjects = [
-  {
-    title: 'Qatar Group Project Experience',
-    category: 'HTA / Qatar',
-    summary:
-      'A dedicated HTA project branch for Qatar-based references in residential, commercial, healthcare, and infrastructure-related work.',
-  },
-  {
-    title: 'Lattakia Kiosk Project',
-    category: 'SEC / Syria',
-    summary:
-      'A Syria-side portfolio item suitable to anchor SEC’s local project showcase as part of the group website structure.',
-  },
-  {
-    title: 'Institutional Renovation Portfolio',
-    category: 'SEC / Syria',
-    summary:
-      'A future project category page for mosque, school, and public-sector renovation references under SEC.',
-  },
-] as const;
+export type FeaturedProject = {
+  slug:string,
+  title: string;
+  category: string;
+  summary: string;
+};
+
+export type FeaturedProjectsData = {
+  hta: readonly FeaturedProject[];
+  sec: readonly FeaturedProject[];
+};
+
+export const featuredProjects: FeaturedProjectsData = {
+  hta: [
+    {
+      slug:'HTA-1',
+      title: 'Qatar Group Project Experience',
+      category: 'HTA / Qatar',
+      summary:
+        'A dedicated HTA project branch for Qatar-based references in residential, commercial, healthcare, and infrastructure-related work.',
+    },
+  ],
+  sec: [
+    {
+      slug:'SEC-1',
+      title: 'Lattakia Kiosk Project',
+      category: 'SEC / Syria',
+      summary:
+        'A Syria-side portfolio item suitable to anchor SEC’s local project showcase as part of the group website structure.',
+    },
+    {
+      slug:'SEC-2',
+      title: 'Institutional Renovation Portfolio',
+      category: 'SEC / Syria',
+      summary:
+        'A future project category page for mosque, school, and public-sector renovation references under SEC.',
+    },
+  ],
+};
 
 export const systems = [
   'General contracting & renovation',
