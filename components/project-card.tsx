@@ -9,13 +9,13 @@ export function ProjectCard({
   category,
   summary,
   lang,
-  slug
+  slug,
 }: {
   title: string;
   category: string;
   summary: string;
   lang: Language;
-  slug:string
+  slug:string,
 }) {
   const text = uiText[lang];
   return (

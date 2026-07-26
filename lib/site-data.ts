@@ -121,6 +121,7 @@ export type FeaturedProject = {
   title: string;
   category: string;
   summary: string;
+  img:string[]
 };
 
 export type FeaturedProjectsData = {
@@ -132,27 +133,181 @@ export const featuredProjects: FeaturedProjectsData = {
   hta: [
     {
       slug:'HTA-1',
-      title: 'Qatar Group Project Experience',
+      title: 'Gewan island buildings 7A/B - 5A/b - 4A/B club house',
       category: 'HTA / Qatar',
       summary:
-        'A dedicated HTA project branch for Qatar-based references in residential, commercial, healthcare, and infrastructure-related work.',
+        'Installation T&C of HVAC systems',
+      img:['/Projetcs/img1.jpg' , '/Projetcs/img2.jpg' ,'/Projetcs/img3.jpg']
+    },
+    {
+      slug:'HTA-2',
+      title: 'Almeera izghawa',
+      category: 'HTA / Qatar',
+      summary:
+        'Renovation of MEP system',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-3',
+      title: 'Al Maha tower ',
+      category: 'HTA / Qatar',
+      summary:
+        'Construction of a high-rise residential tower consisting of 252 apartments with associated amenities',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-4',
+      title: 'Almeera Algarafah ',
+      category: 'HTA / Qatar',
+      summary:
+        'Renovation of MEP system',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-5',
+      title: 'office Workspace Al Jazzera tower ',
+      category: 'HTA / Qatar',
+      summary:
+        'Complete interior fit-out works',
+     img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-6',
+      title: 'Corridor Steigenberger hotel',
+      category: 'HTA / Qatar',
+      summary:
+        'Complete interior fit-out works',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-7',
+      title: 'Hospital lobby Education city',
+      category: 'HTA / Qatar',
+      summary:
+        'Complete interior fit-out works',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-8',
+      title: 'Almeera Al-Qutaifiah',
+      category: 'HTA / Qatar',
+      summary:
+        'Renovation of MEP system',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-9',
+      title: 'Al Hadaf Shooting Range PH-2',
+      category: 'HTA / Qatar',
+      summary:
+        'Supply, Installation , T&C of MEP systems',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-10',
+      title: 'Um Al-Saneem Villa',
+      category: 'HTA / Qatar',
+      summary:
+        'Civil & MEP works',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-11',
+      title: 'RAS LAFAN RLCI',
+      category: 'HTA / Qatar',
+      summary:
+        'Programing for all types of fire alarm control panel',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-12',
+      title: 'RESIDENTIAL & COMMERCIALBUILDING (B + G + 4) Al Naser Area, Doha',
+      category: 'HTA / Qatar',
+      summary:
+        'Supply , Installation , T&C & Maintenance of MEP works',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-13',
+      title: 'AL-MAJED FARM Rawdit Rashed Area, Doha',
+      category: 'HTA / Qatar',
+      summary:
+        'Supply , Installation , T&C of rain water system & hardscaping',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-14',
+      title: 'EXPO QATAR : Turkey side',
+      category: 'HTA / Qatar',
+      summary:
+        'Supply , Installation , T&C of Fire Systems',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'HTA-15',
+      title: 'EXPO QATAR :JAPANESE PAVILION',
+      category: 'HTA / Qatar',
+      summary:
+        'Supply , Installation , T&C of MEP systems',
+      img:['/Projetcs/img1.jpg']
     },
   ],
   sec: [
     {
       slug:'SEC-1',
-      title: 'Lattakia Kiosk Project',
+      title: 'Naval Forces and Coastal Defense Command',
+      category: 'SEC / Syria',
+      summary:
+        'Renovation Naval Forces and Coastal Defense Command – Lattakia',
+      img:['/Projetcs/img1.jpg']
+    },
+     {
+      slug:'SEC-2',
+      title: 'BASHOURA MOSQUE',
+      category: 'SEC / Syria',
+      summary:
+        'Renovation Bashura Mosque – Lattakia',
+      img:['/Projetcs/img1.jpg']
+    },
+    {
+      slug:'SEC-3',
+      title: 'STAMO AIRPORT',
       category: 'SEC / Syria',
       summary:
         'A Syria-side portfolio item suitable to anchor SEC’s local project showcase as part of the group website structure.',
+      img:['/Projetcs/img1.jpg']
     },
     {
-      slug:'SEC-2',
-      title: 'Institutional Renovation Portfolio',
+      slug:'SEC-4',
+      title: 'Lattakia Kiosk Project',
       category: 'SEC / Syria',
       summary:
-        'A future project category page for mosque, school, and public-sector renovation references under SEC.',
+        'Supply, Installation, of 150 Kiosk in Lattakia',
+      img:['/Projetcs/img1.jpg']
     },
+     {
+      slug:'SEC-5',
+      title: 'AL- Ihsan Mosque',
+      category: 'SEC / Syria',
+      summary:
+        'Renovation IhsanMosque – Kinsiba - Lattakia.',
+      img:['/Projetcs/img1.jpg']
+    },
+     {
+      slug:'SEC-6',
+      title: 'KINSIBA SHCOOL',
+      category: 'SEC / Syria',
+      summary:
+        'Renovation Kinsiba Shcool - Lattakia',
+      img:['/Projetcs/img1.jpg']
+    },
+    // {
+    //   slug:'SEC-5',
+    //   title: 'Institutional Renovation Portfolio',
+    //   category: 'SEC / Syria',
+    //   summary:
+    //     'A future project category page for mosque, school, and public-sector renovation references under SEC.',
+    // },
   ],
 };
 
