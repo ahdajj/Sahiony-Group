@@ -285,13 +285,6 @@ export const featuredProjects: FeaturedProjectsData = {
         'Renovation Kinsiba Shcool - Lattakia',
       img:['/Projetcs/SEC/KINSIBA-SHCOOL/img-1.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-2.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-3.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-4.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-5.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-6.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-7.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-8.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-9.jpg']
     },
-    // {
-    //   slug:'AL-Ihsan-Mosque',
-    //   title: 'Institutional Renovation Portfolio',
-    //   category: 'SEC / Syria',
-    //   summary:
-    //     'A future project category page for mosque, school, and public-sector renovation references under SEC.',
-    // },
   ],
 };
 

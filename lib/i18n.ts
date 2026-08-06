@@ -18,12 +18,6 @@ export type SearchParams = {
   lang?: string | string[];
 };
 
-// export type ProjectParams = {
-//   slug?: string;
-// };
-// export function resolveProject (params?:ProjectParams ) {
-//   return params.value.slug
-// }
 export function resolveLanguage(searchParams?: SearchParams): Language {
   const raw = Array.isArray(searchParams?.lang) ? searchParams?.lang[0] : searchParams?.lang;
   return raw === 'ar' ? 'ar' : 'en';
@@ -141,95 +135,70 @@ const servicesAr = servicesEn.map((service, index) => {
 const featuredProjectsHtaAr = featuredProjectsEn.hta.map((project, index) => {
   const text = [
     {
-      slug: 'HTA-1',
-      title: 'مباني جزيرة جيوان 7A/B - 5A/B - 4A/B ونادي الجزيرة',
+      title: 'ميدان الهدف للرماية المرحلة الثانية',
       category: 'HTA / قطر',
-      summary: 'توريد وتركيب واختبار وتشغيل أنظمة التكييف والتبريد (HVAC)',
+      summary: 'توريد وتركيب واختبار وتشغيل أنظمة الكهروميكانيكية'
     },
     {
-      slug: 'HTA-2',
-      title: 'الميرة – إزغوى',
+      title: 'جونيورز',
       category: 'HTA / قطر',
-      summary: 'تجديد أنظمة الميكانيكا والكهرباء والسباكة (MEP)',
+      summary: 'أعمال الحماية من الحريق'
     },
     {
-      slug: 'HTA-3',
-      title: 'برج المها',
+      title: 'الوكرة البدر',
       category: 'HTA / قطر',
-      summary: 'إنشاء برج سكني مرتفع يضم 252 شقة مع جميع المرافق والخدمات المرتبطة به',
+      summary: 'نظام إنذار الحريق'
     },
     {
-      slug: 'HTA-4',
-      title: 'الميرة – الغرافة',
+      title: 'الميرة الغرافة، الميرة القطيفية، الميرة إزغوا',
       category: 'HTA / قطر',
-      summary: 'تجديد أنظمة الميكانيكا والكهرباء والسباكة (MEP)',
+      summary: 'تجديد أنظمة الكهروميكانيكية'
     },
     {
-      slug: 'HTA-5',
-      title: 'مساحات المكاتب – برج الجزيرة',
+      title: 'نجلاء',
       category: 'HTA / قطر',
-      summary: 'تنفيذ أعمال التشطيبات الداخلية بالكامل',
+      summary: 'أعمال التشطيب الداخلي الكاملة'
     },
     {
-      slug: 'HTA-6',
-      title: 'ممرات فندق شتايجنبرجر',
+      title: 'كرافتيراس',
       category: 'HTA / قطر',
-      summary: 'تنفيذ أعمال التشطيبات الداخلية بالكامل',
+      summary: 'أعمال الحماية من الحريق'
     },
     {
-      slug: 'HTA-7',
-      title: 'ردهة المستشفى – المدينة التعليمية',
+      title: 'مباني جزيرة جيوان 7A/B - 5A/B - 4A/B ونادي النادي',
       category: 'HTA / قطر',
-      summary: 'تنفيذ أعمال التشطيبات الداخلية بالكامل',
+      summary: 'تركيب واختبار وتشغيل أنظمة التكييف والتهوية والتدفئة'
     },
     {
-      slug: 'HTA-8',
-      title: 'الميرة – القطيفية',
+      title: 'فيلا أم السانيم',
       category: 'HTA / قطر',
-      summary: 'تجديد أنظمة الميكانيكا والكهرباء والسباكة (MEP)',
+      summary: 'أعمال مدنية وكهروميكانيكية'
     },
     {
-      slug: 'HTA-9',
-      title: 'ميدان الهدف للرماية – المرحلة الثانية',
-      category: 'HTA / قطر',
-      summary: 'توريد وتركيب واختبار وتشغيل أنظمة الميكانيكا والكهرباء والسباكة (MEP)',
-    },
-    {
-      slug: 'HTA-10',
-      title: 'فيلا أم السنيم',
-      category: 'HTA / قطر',
-      summary: 'تنفيذ الأعمال المدنية وأعمال الميكانيكا والكهرباء والسباكة (MEP)',
-    },
-    {
-      slug: 'HTA-11',
       title: 'رأس لفان RLCI',
       category: 'HTA / قطر',
-      summary: 'برمجة جميع أنواع لوحات التحكم في أنظمة إنذار الحريق',
+      summary: 'برمجة جميع أنواع لوحات التحكم في أنظمة إنذار الحريق'
     },
     {
-      slug: 'HTA-12',
-      title: 'مبنى سكني وتجاري (بدروم + أرضي + 4 طوابق) – منطقة الناصر، الدوحة',
+      title: 'مبنى سكني وتجاري (قبو + أرضي + 4) منطقة النصر، الدوحة',
       category: 'HTA / قطر',
-      summary: 'توريد وتركيب واختبار وتشغيل وصيانة أعمال الميكانيكا والكهرباء والسباكة (MEP)',
+      summary: 'توريد وتركيب واختبار وتشغيل وصيانة أعمال الكهروميكانيكية'
     },
     {
-      slug: 'HTA-13',
-      title: 'مزرعة الماجد – منطقة روضة راشد، الدوحة',
+      title: 'مزرعة الماجد منطقة روضة راشد، الدوحة',
       category: 'HTA / قطر',
-      summary: 'توريد وتركيب واختبار وتشغيل نظام تصريف مياه الأمطار وأعمال تنسيق المواقع الصلبة',
+      summary: 'توريد وتركيب واختبار وتشغيل نظام مياه الأمطار وأعمال التسطيح الصلب'
     },
     {
-      slug: 'HTA-14',
-      title: 'إكسبو قطر – الجناح التركي',
+      title: 'إكسبو قطر: الجانب التركي',
       category: 'HTA / قطر',
-      summary: 'توريد وتركيب واختبار وتشغيل أنظمة مكافحة وإنذار الحريق',
+      summary: 'توريد وتركيب واختبار وتشغيل أنظمة الحريق'
     },
     {
-      slug: 'HTA-15',
-      title: 'إكسبو قطر – الجناح الياباني',
+      title: 'إكسبو قطر: الجناح الياباني',
       category: 'HTA / قطر',
-      summary: 'توريد وتركيب واختبار وتشغيل أنظمة الميكانيكا والكهرباء والسباكة (MEP)',
-    },
+      summary: 'توريد وتركيب واختبار وتشغيل أنظمة الكهروميكانيكية'
+    }
   ][index];
 
   return {
@@ -243,41 +212,35 @@ const featuredProjectsHtaAr = featuredProjectsEn.hta.map((project, index) => {
 const featuredProjectsSECAr = featuredProjectsEn.sec.map((project, index) => {
   const text = [
     {
-      slug: 'SEC-1',
       title: 'قيادة القوات البحرية والدفاع الساحلي',
       category: 'SEC / سوريا',
-      summary: ' تجديد قيادة القوات البحرية والدفاع الساحلي – اللاذقية',
+      summary: 'تجديد قيادة القوات البحرية والدفاع الساحلي – اللاذقية'
     },
     {
-      slug: 'SEC-2',
-      title: 'مسجد الباشورة',
+      title: 'مسجد باشورة',
       category: 'SEC / سوريا',
-      summary: 'نتجديد مسجد الباشورة – اللاذقية',
+      summary: 'تجديد مسجد باشورة – اللاذقية'
     },
     {
-      slug: 'SEC-3',
       title: 'مطار ستامو',
       category: 'SEC / سوريا',
-      summary: 'أحد مشاريع SEC في سوريا، مناسب ليكون مشروعًا رئيسيًا ضمن معرض المشاريع المحلية في هيكل موقع المجموعة.',
+      summary: 'عنصر محفظة من الجانب السوري مناسب لتثبيت عرض مشاريع SEC المحلية كجزء من هيكل موقع المجموعة'
     },
     {
-      slug: 'SEC-4',
       title: 'مشروع أكشاك اللاذقية',
       category: 'SEC / سوريا',
-      summary: 'توريد وتركيب 150 كشكًا في اللاذقية',
+      summary: 'توريد وتركيب 150 كشك في اللاذقية'
     },
     {
-      slug: 'SEC-5',
       title: 'مسجد الإحسان',
       category: 'SEC / سوريا',
-      summary: 'تجديد مسجد الإحسان – كنسيبا – اللاذقية',
+      summary: 'تجديد مسجد الإحسان – كنسيبا - اللاذقية'
     },
     {
-      slug: 'SEC-6',
       title: 'مدرسة كنسيبا',
       category: 'SEC / سوريا',
-      summary: 'تجديد مدرسة كنسيبا – اللاذقية',
-    },
+      summary: 'تجديد مدرسة كنسيبا - اللاذقية'
+    }
   ][index];
 
   return {
@@ -621,3 +584,4 @@ export const HeroText ={
     Herobutton:"اكتشف خدماتنا"
   }
 }as const
+
