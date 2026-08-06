@@ -132,177 +132,161 @@ export type FeaturedProjectsData = {
 export const featuredProjects: FeaturedProjectsData = {
   hta: [
     {
-      slug:'HTA-1',
-      title: 'Gewan island buildings 7A/B - 5A/b - 4A/B club house',
-      category: 'HTA / Qatar',
-      summary:
-        'Installation T&C of HVAC systems',
-      img:['/Projetcs/img1.jpg' , '/Projetcs/img2.jpg' ,'/Projetcs/img3.jpg']
-    },
-    {
-      slug:'HTA-2',
-      title: 'Almeera izghawa',
-      category: 'HTA / Qatar',
-      summary:
-        'Renovation of MEP system',
-      img:['/Projetcs/img1.jpg']
-    },
-    {
-      slug:'HTA-3',
-      title: 'Al Maha tower ',
-      category: 'HTA / Qatar',
-      summary:
-        'Construction of a high-rise residential tower consisting of 252 apartments with associated amenities',
-      img:['/Projetcs/img1.jpg']
-    },
-    {
-      slug:'HTA-4',
-      title: 'Almeera Algarafah ',
-      category: 'HTA / Qatar',
-      summary:
-        'Renovation of MEP system',
-      img:['/Projetcs/img1.jpg']
-    },
-    {
-      slug:'HTA-5',
-      title: 'office Workspace Al Jazzera tower ',
-      category: 'HTA / Qatar',
-      summary:
-        'Complete interior fit-out works',
-     img:['/Projetcs/img1.jpg']
-    },
-    {
-      slug:'HTA-6',
-      title: 'Corridor Steigenberger hotel',
-      category: 'HTA / Qatar',
-      summary:
-        'Complete interior fit-out works',
-      img:['/Projetcs/img1.jpg']
-    },
-    {
-      slug:'HTA-7',
-      title: 'Hospital lobby Education city',
-      category: 'HTA / Qatar',
-      summary:
-        'Complete interior fit-out works',
-      img:['/Projetcs/img1.jpg']
-    },
-    {
-      slug:'HTA-8',
-      title: 'Almeera Al-Qutaifiah',
-      category: 'HTA / Qatar',
-      summary:
-        'Renovation of MEP system',
-      img:['/Projetcs/img1.jpg']
-    },
-    {
-      slug:'HTA-9',
+      slug:'Shooting-Range',
       title: 'Al Hadaf Shooting Range PH-2',
       category: 'HTA / Qatar',
       summary:
         'Supply, Installation , T&C of MEP systems',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/HTA/Shooting-Range/img-1.jpg','/Projetcs/HTA/Shooting-Range/img-2.jpg','/Projetcs/HTA/Shooting-Range/img-3.jpg','/Projetcs/HTA/Shooting-Range/img-4.jpg','/Projetcs/HTA/Shooting-Range/img-5.jpg']
     },
     {
-      slug:'HTA-10',
+      slug:'JUNIORS',
+      title: 'JUNIORS',
+      category: 'HTA / Qatar',
+      summary:
+        'Fire Works',
+      img:['/Projetcs/HTA/JUNIORS/img-1.jpg']
+    },
+    {
+      slug:'ALWAKRAH-ALBADER',
+      title: 'ALWAKRAH ALBADER ',
+      category: 'HTA / Qatar',
+      summary:
+        'Fire Alarm system',
+      img:['/Projetcs/HTA/ALWAKRAH-ALBADER/img-1.jpg','/Projetcs/HTA/ALWAKRAH-ALBADER/img-2.jpg','/Projetcs/HTA/ALWAKRAH-ALBADER/img-3.jpg']
+    },
+    {
+      slug:'Almeera',
+      title: 'Almeera Algarafah , Almeera Al-Qutaifiah , ALMEERA IZGHAWA',
+      category: 'HTA / Qatar',
+      summary:
+        'Renovation of MEP system',
+      img:['/Projetcs/HTA/Almeera/img-1.jpg','/Projetcs/HTA/Almeera/img-2.jpg','/Projetcs/HTA/Almeera/img-3.jpg','/Projetcs/HTA/Almeera/img-4.jpg','/Projetcs/HTA/Almeera/img-5.jpg','/Projetcs/HTA/Almeera/img-6.jpg']
+    },
+    {
+      slug:'NJLAA',
+      title: 'NJLAA',
+      category: 'HTA / Qatar',
+      summary:
+        'Complete interior fit-out works',
+     img:['/Projetcs/HTA/NJLAA/img-1.jpg','/Projetcs/HTA/NJLAA/img-2.jpg','/Projetcs/HTA/NJLAA/img-3.jpg','/Projetcs/HTA/NJLAA/img-4.jpg']
+    },
+    {
+      slug:'CRAFTERAS',
+      title: 'CRAFTERAS',
+      category: 'HTA / Qatar',
+      summary:
+        'Fire Works',
+      img:['/Projetcs/HTA/CRAFTERAS/img-1.jpg','/Projetcs/HTA/CRAFTERAS/img-2.jpg','/Projetcs/HTA/CRAFTERAS/img-3.jpg','/Projetcs/HTA/CRAFTERAS/img-4.jpg','/Projetcs/HTA/CRAFTERAS/img-5.jpg','/Projetcs/HTA/CRAFTERAS/img-6.jpg']
+    },
+    {
+      slug:'Gewan',
+      title: 'Gewan island buildings 7A/B - 5A/b - 4A/B club house',
+      category: 'HTA / Qatar',
+      summary:
+        'Installation T&C of HVAC systems',
+      img:['/Projetcs/HTA/Gewan/img-1.jpg' ,'/Projetcs/HTA/Gewan/img-2.jpg','/Projetcs/HTA/Gewan/img-3.jpg']
+    },
+    {
+      slug:'VILLA-HASAN',
       title: 'Um Al-Saneem Villa',
       category: 'HTA / Qatar',
       summary:
         'Civil & MEP works',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/HTA/VILLA-HASAN/img-1.jpg','/Projetcs/HTA/VILLA-HASAN/img-2.jpg','/Projetcs/HTA/VILLA-HASAN/img-3.jpg']
     },
     {
-      slug:'HTA-11',
+      slug:'RAS-LAFAN',
       title: 'RAS LAFAN RLCI',
       category: 'HTA / Qatar',
       summary:
         'Programing for all types of fire alarm control panel',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/HTA/RAS-LAFAN/img-1.jpg','/Projetcs/HTA/RAS-LAFAN/img-2.jpg','/Projetcs/HTA/RAS-LAFAN/img-3.jpg','/Projetcs/HTA/RAS-LAFAN/img-4.jpg','/Projetcs/HTA/RAS-LAFAN/img-5.jpg','/Projetcs/HTA/RAS-LAFAN/img-6.jpg','/Projetcs/HTA/RAS-LAFAN/img-7.jpg','/Projetcs/HTA/RAS-LAFAN/img-8.jpg']
     },
     {
-      slug:'HTA-12',
+      slug:'ALNASR-PROMAN-FABIO',
       title: 'RESIDENTIAL & COMMERCIALBUILDING (B + G + 4) Al Naser Area, Doha',
       category: 'HTA / Qatar',
       summary:
         'Supply , Installation , T&C & Maintenance of MEP works',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/HTA/ALNASR-PROMAN-FABIO/img-1.jpg','/Projetcs/HTA/ALNASR-PROMAN-FABIO/img-2.jpg','/Projetcs/HTA/ALNASR-PROMAN-FABIO/img-3.jpg','/Projetcs/HTA/ALNASR-PROMAN-FABIO/img-4.jpg']
     },
     {
-      slug:'HTA-13',
+      slug:'AL-MAJED-FARM',
       title: 'AL-MAJED FARM Rawdit Rashed Area, Doha',
       category: 'HTA / Qatar',
       summary:
         'Supply , Installation , T&C of rain water system & hardscaping',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/HTA/AL-MAJED-FARM/img-1.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-2.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-3.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-4.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-5.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-6.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-8.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-9.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-10.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-11.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-12.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-13.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-14.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-15.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-16.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-17.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-18.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-19.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-20.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-21.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-22.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-23.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-24.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-25.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-26.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-27.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-28.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-29.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-30.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-31.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-32.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-33.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-34.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-35.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-36.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-37.jpg','/Projetcs/HTA/AL-MAJED-FARM/img-38.jpg']
     },
     {
-      slug:'HTA-14',
+      slug:'Turkey-PAVILION',
       title: 'EXPO QATAR : Turkey side',
       category: 'HTA / Qatar',
       summary:
         'Supply , Installation , T&C of Fire Systems',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/HTA/Turkey-PAVILION/img-1.jpg','/Projetcs/HTA/Turkey-PAVILION/img-2.jpg']
     },
     {
-      slug:'HTA-15',
+      slug:'JAPANESE-PAVILION',
       title: 'EXPO QATAR :JAPANESE PAVILION',
       category: 'HTA / Qatar',
       summary:
         'Supply , Installation , T&C of MEP systems',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/HTA/JAPANESE-PAVILION/img-1.png','/Projetcs/HTA/JAPANESE-PAVILION/img-2.png']
     },
   ],
   sec: [
     {
-      slug:'SEC-1',
+      slug:'Naval-Forces',
       title: 'Naval Forces and Coastal Defense Command',
       category: 'SEC / Syria',
       summary:
         'Renovation Naval Forces and Coastal Defense Command – Lattakia',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/SEC/Naval-Forces/img-1.jpg','/Projetcs/SEC/Naval-Forces/img-2.jpg','/Projetcs/SEC/Naval-Forces/img-3.jpg']
     },
      {
-      slug:'SEC-2',
+      slug:'BASHOURA-MOSQUE',
       title: 'BASHOURA MOSQUE',
       category: 'SEC / Syria',
       summary:
         'Renovation Bashura Mosque – Lattakia',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/SEC/BASHOURA-MOSQUE/img-1.jpg','/Projetcs/SEC/BASHOURA-MOSQUE/img-2.jpg' , '/Projetcs/SEC/BASHOURA-MOSQUE/img-3.jpg','/Projetcs/SEC/BASHOURA-MOSQUE/img-4.jpg','/Projetcs/SEC/BASHOURA-MOSQUE/img-5.jpg','/Projetcs/SEC/BASHOURA-MOSQUE/img-6.jpg','/Projetcs/SEC/BASHOURA-MOSQUE/img-7.jpg','/Projetcs/SEC/BASHOURA-MOSQUE/img-8.jpg']
     },
     {
-      slug:'SEC-3',
+      slug:'STAMO-AIRPORT',
       title: 'STAMO AIRPORT',
       category: 'SEC / Syria',
       summary:
         'A Syria-side portfolio item suitable to anchor SEC’s local project showcase as part of the group website structure.',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/SEC/STAMO-AIRPORT/img-1.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-2.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-3.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-4.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-5.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-6.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-7.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-8.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-9.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-10.jpg']
     },
     {
-      slug:'SEC-4',
+      slug:'Lattakia-Kiosk',
       title: 'Lattakia Kiosk Project',
       category: 'SEC / Syria',
       summary:
         'Supply, Installation, of 150 Kiosk in Lattakia',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/SEC/Lattakia-Kiosk/img-1.jpg','/Projetcs/SEC/Lattakia-Kiosk/img-2.jpg','/Projetcs/SEC/Lattakia-Kiosk/img-3.jpg','/Projetcs/SEC/Lattakia-Kiosk/img-4.jpg']
     },
      {
-      slug:'SEC-5',
-      title: 'AL- Ihsan Mosque',
+      slug:'AL-Ihsan-Mosque',
+      title: 'AL-Ihsan Mosque',
       category: 'SEC / Syria',
       summary:
         'Renovation IhsanMosque – Kinsiba - Lattakia.',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/SEC/AL-Ihsan-Mosque/img-1.jpg','/Projetcs/SEC/AL-Ihsan-Mosque/img-2.jpg','/Projetcs/SEC/AL-Ihsan-Mosque/img-3.jpg','/Projetcs/SEC/AL-Ihsan-Mosque/img-4.jpg','/Projetcs/SEC/AL-Ihsan-Mosque/img-5.jpg','/Projetcs/SEC/AL-Ihsan-Mosque/img-6.jpg']
     },
      {
-      slug:'SEC-6',
+      slug:'KINSIBA-SHCOOL',
       title: 'KINSIBA SHCOOL',
       category: 'SEC / Syria',
       summary:
         'Renovation Kinsiba Shcool - Lattakia',
-      img:['/Projetcs/img1.jpg']
+      img:['/Projetcs/SEC/KINSIBA-SHCOOL/img-1.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-2.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-3.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-4.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-5.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-6.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-7.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-8.jpg','/Projetcs/SEC/KINSIBA-SHCOOL/img-9.jpg']
     },
     // {
-    //   slug:'SEC-5',
+    //   slug:'AL-Ihsan-Mosque',
     //   title: 'Institutional Renovation Portfolio',
     //   category: 'SEC / Syria',
     //   summary:
