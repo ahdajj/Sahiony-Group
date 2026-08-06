@@ -35,7 +35,7 @@ export function ProjectCard({
         <div className="project-category">{category}</div>
         <p className="project-summary">{summary}</p>
         <div style={{ marginTop: 18, display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700 }}>
-          <Link href={`/projects/${slug}`}>{text.sections.openCaseStudy} {lang==='en' ? <ChevronRight size={16}/>: <ChevronLeft size={16}/> } </Link>
+          <Link href={`/projects/${slug}?lang=${lang}`}>{text.sections.openCaseStudy} {lang==='en' ? <ChevronRight size={16}/>: <ChevronLeft size={16}/> } </Link>
         </div>
       </div>
     </article>

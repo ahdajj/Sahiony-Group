@@ -1111,7 +1111,8 @@ a.lang-switch-label:hover {
 }
 
 
-/* Projetc Detail Page */
+/* Project Detail Page */
+
 .project-detail-card {
   background: rgba(255, 255, 255, 0.92);
 }
@@ -1128,19 +1129,21 @@ a.lang-switch-label:hover {
 }
 
 .project-detail-summary {
-  color: var(--muted);
-  line-height: 1.8;
   margin-top: 14px;
   max-width: 74ch;
+  color: var(--muted);
+  line-height: 1.8;
 }
 
 .project-gallery {
   margin-top: 28px;
   padding: 28px;
   border-radius: var(--radius-xl);
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(41, 51, 110, 0.1);
-  box-shadow: 0 16px 40px rgba(31, 42, 90, 0.08);
+
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(41,51,110,.1);
+  box-shadow: 0 16px 40px rgba(31,42,90,.08);
+
   backdrop-filter: blur(10px);
 }
 
@@ -1148,7 +1151,7 @@ a.lang-switch-label:hover {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .project-gallery-header h2 {
@@ -1158,61 +1161,146 @@ a.lang-switch-label:hover {
 
 .project-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 25dvh);
+  /* grid-auto-rows: 120px; */
+  grid-auto-flow: dense;
+  gap: 5px;
 }
 
 .project-gallery-card {
+  position: relative;
   overflow: hidden;
+  margin: 0;
+
   border-radius: 22px;
   background: var(--bg-card);
-  border: 1px solid rgba(41, 51, 110, 0.08);
-  box-shadow: 0 10px 24px rgba(31, 42, 90, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  border: 1px solid rgba(41,51,110,.08);
+  box-shadow: 0 10px 24px rgba(31,42,90,.08);
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
 }
 
 .project-gallery-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 36px rgba(31, 42, 90, 0.12);
-}
-
-.project-gallery-card.is-featured {
-  grid-column: 1 / -1;
+  box-shadow: 0 20px 40px rgba(31,42,90,.12);
 }
 
 .project-gallery-image {
   width: 100%;
   height: 100%;
-  min-height: 240px;
-  object-fit: cover;
+  display: block;
+  object-fit: fill;
+
+  transition: transform .5s ease;
+}
+
+.project-gallery-card:hover .project-gallery-image {
+  transform: scale(1.08);
 }
 
 .project-gallery-card figcaption {
-  padding: 12px 14px 16px;
-  color: var(--muted);
-  font-size: 0.95rem;
-  font-weight: 600;
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+
+  padding: 14px 16px;
+
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 500;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.72),
+    rgba(0,0,0,.15),
+    transparent
+  );
+}
+  /* this to make the grid looks chaiotic */
+.large {
+  grid-column: span 4;
+  grid-row: span 3;
+}
+.wide {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+.tall {
+  grid-column: span 2;
+  grid-row: span 4;
+}
+
+.small {
+  grid-column: span 2;
+  grid-row: span 2;
 }
 
 .project-gallery-placeholder {
   padding: 26px;
-  border-radius: 20px;
   text-align: center;
+
+  border-radius: 20px;
+
   color: var(--muted);
-  background: linear-gradient(135deg, rgba(244, 179, 42, 0.12), rgba(41, 51, 110, 0.08));
+
+  background: linear-gradient(
+    135deg,
+    rgba(244,179,42,.12),
+    rgba(41,51,110,.08)
+  );
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+
   .project-gallery {
-    padding: 20px;
+    padding: 22px;
+  }
+
+  .project-gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 110px;
+  }
+
+  .large,
+  .wide {
+    grid-column: span 4;
+  }
+
+  .medium {
+    grid-column: span 2;
+  }
+
+  .tall,
+  .small {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+
+  .project-gallery {
+    padding: 18px;
   }
 
   .project-gallery-grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: 260px;
   }
 
-  .project-gallery-card.is-featured {
-    grid-column: auto;
+  .large,
+  .wide,
+  .medium,
+  .tall,
+  .small {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .project-gallery-card {
+    border-radius: 18px;
   }
 }
-
