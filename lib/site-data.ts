@@ -165,10 +165,10 @@ export const featuredProjects: FeaturedProjectsData = {
     },
     {
       slug:'NJLAA',
-      title: 'NJLAA',
+      title: 'NJLAA Schools',
       category: 'HTA / Qatar',
       summary:
-        'Complete interior fit-out works',
+        'NJLAA Schools Maintainance',
      img:['/Projetcs/HTA/NJLAA/img-1.jpg','/Projetcs/HTA/NJLAA/img-2.jpg','/Projetcs/HTA/NJLAA/img-3.jpg','/Projetcs/HTA/NJLAA/img-4.jpg']
     },
     {

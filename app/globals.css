@@ -272,13 +272,13 @@ a.lang-switch-label:hover {
 }
 
 .logo-box {
-  background: #fff;
+  background: transparent;
   border-radius: 16px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(41, 51, 110, 0.1);
+  /* border: 1px solid rgba(41, 51, 110, 0.1); */
 }
 
 .logo-box img {
@@ -1193,8 +1193,8 @@ a.lang-switch-label:hover {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: fill;
-
+  object-fit:cover;
+  object-position: center;
   transition: transform .5s ease;
 }
 
@@ -1206,13 +1206,10 @@ a.lang-switch-label:hover {
   position: absolute;
   inset-inline: 0;
   bottom: 0;
-
   padding: 14px 16px;
-
   color: #fff;
   font-size: .9rem;
   font-weight: 500;
-
   background: linear-gradient(
     to top,
     rgba(0,0,0,.72),
