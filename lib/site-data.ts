@@ -145,7 +145,7 @@ export const featuredProjects: FeaturedProjectsData = {
       category: 'HTA / Qatar',
       summary:
         'Fire Works',
-      img:['/Projetcs/HTA/JUNIORS/img-1.jpg']
+      img:['/Projetcs/HTA/JUNIORS/img-1.jPG']
     },
     {
       slug:'ALWAKRAH-ALBADER',
