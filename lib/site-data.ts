@@ -44,7 +44,7 @@ export const companies: Company[] = [
     logo: '/HTA LOgo.jpg',
     icon: Factory,
     description:
-      'HTA is positioned as the Qatar arm of the group, with a multidisciplinary electro-mechanical and maintenance profile covering design, supply, installation, testing, commissioning, project management, training, and planning.',
+      'HTA Construction & Trading Co. W.L.L is a specialized electro-mechanical contracting company based in Doha, Qatar, delivering integrated engineering solutions across Fire Protection Systems and MEP works.The company is built on strong technical expertise, practical site experience, anda commitment to delivering high-quality systems in compliance withinternational standards and local authority requirements.HTA provides complete services including design support, material supply,installation, testing, commissioning, and maintenance, ensuring reliable and eficient system performance.',
     bullets: [
       'Electro-mechanical contracting',
       'Building maintenance services',
@@ -60,7 +60,7 @@ export const companies: Company[] = [
     logo: '/SEC LOGO SAHIONY.jpg',
     icon: Building,
     description:
-      'SEC is positioned as the Syria arm of the group, with general contracting, renovation, HVAC, plumbing and drainage, fire fighting, fire alarm, electrical systems, low current systems, and building maintenance capability.',
+      'SEC is an affiliate of SAHIONY Group of Co. W.L.L. specializing in General contracting & building maintenance.Tracing its roots, SEC Which Based in SYRIA emerged from an General contracting business established more than Ten years in Qatar. It started its operation in Doha, State of Qatar by the year 2015 and has successfully maintained a steady growth in business. With all the experiences, training and techniques it acquired, together with a never ending efforts to render high.',
     bullets: [
       'General contracting & renovation',
       'MEP and life safety systems',
@@ -346,3 +346,6 @@ export const valueProps = [
     icon: Wrench,
   },
 ] as const;
+
+export const Partners = ['Partners/brands1.jpeg','Partners/brands2.jpg','Partners/brands3.png','Partners/brands4.jpg','Partners/brands5.png','Partners/brands6.png','Partners/brands7.jpg','Partners/brands8.jpg','Partners/brands9.jpg','Partners/brands10.jpg','Partners/brands11.jpg' 
+] as const

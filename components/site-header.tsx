@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { LogoMark } from './logo-mark';
 import { isArabic, type Language, uiText, withLang } from '../lib/i18n';
 
 export function SiteHeader({ lang }: { lang: Language }) {
@@ -92,7 +91,6 @@ export function SiteHeader({ lang }: { lang: Language }) {
     <header className="topbar">
       <div className="container topbar-inner">
         <Link href={withLang('/', lang)} className="brand">
-          <LogoMark src="/SEC LOGO SAHIONY.jpg" alt="Sahiony Group" header />
           <div className="brand-meta">
             <small>{text.groupName}</small>
             <span>{text.brandSubtitle}</span>

@@ -19,7 +19,6 @@ export function LogoMark({
         alt={alt}
         width={320}
         height={140}
-        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
         sizes="(max-width: 768px) 160px, 320px"
         priority={header}
       />

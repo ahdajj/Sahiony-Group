@@ -8,6 +8,8 @@ import {
   Layers3,
   Mail,
   MapPin,
+  MoveLeft,
+  MoveRight,
   Phone,
   ShieldCheck,
   Sparkles,
@@ -20,6 +22,8 @@ import { SiteFooter } from '../components/site-footer';
 import { SiteHeader } from '../components/site-header';
 import {Heroarea} from '../components/Hero-area'
 import { getLocalizedSiteData, resolveLanguage, uiText, withLang, type SearchParams } from '../lib/i18n';
+import { Partners } from '../lib/site-data';
+import Link from "next/link";
 
 export default async function HomePage({ searchParams }: { searchParams?: Promise<SearchParams> }) {
   const lang = resolveLanguage(await searchParams);
@@ -35,7 +39,7 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
     systems,
     valueProps,
   } = getLocalizedSiteData(lang);
-  const allFeaturedProjects = [...featuredProjects.hta, ...featuredProjects.sec];
+  // const allFeaturedProjects = [...featuredProjects.hta, ...featuredProjects.sec];
 
   return (
     <div className="page-shell" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
@@ -172,10 +176,35 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
             description={text.sections.projectsDesc}
           />
           <div className="spacer-32" />
-          <div className="grid-3">
-            {allFeaturedProjects.map((project, index) => (
+          <div className="grid-5">
+            {featuredProjects.hta.slice(0,3).map((project, index) => (
               <ProjectCard key={project.title} title={project.title} category={project.category} summary={project.summary} lang={lang} slug={project.slug} />
             ))}
+            {lang === 'en' ? 
+             <Link className='Reedmore en' href={`/companies/hta?lang=en`}>
+             More HTA Projects <span >
+            <MoveRight color='#ffcf63' size="32"/></span> </Link>
+            :
+            <Link className='Reedmore ar' href={`/companies/hta?lang=ar`}>
+            المزيد من مشاريع HTA <span >
+            <MoveLeft color='#ffcf63' size="32"/></span> </Link>  
+            } 
+          </div>
+
+          <div className="spacer-32" />
+          <div className="grid-5">
+            {featuredProjects.hta.slice(0,3).map((project, index) => (
+              <ProjectCard key={project.title} title={project.title} category={project.category} summary={project.summary} lang={lang} slug={project.slug} />
+            ))}
+            {lang === 'en' ? 
+             <Link className='Reedmore en' href={`/companies/hta?lang=en`}>
+             More SEC Projects <span >
+            <MoveRight color='#ffcf63' size="32"/></span> </Link>
+            :
+            <Link className='Reedmore ar' href={`/companies/hta?lang=ar`}>
+            المزيد من مشاريع SEC <span >
+            <MoveLeft color='#ffcf63' size="32"/></span> </Link>  
+            } 
           </div>
         </section>
 
@@ -328,6 +357,22 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
                 </a>
               </div>
             </article>
+          </div>
+        </section>
+
+        <section className="section partner-strip" aria-label="Partner brands">
+          <div className="container">
+            <div className="partner-header">
+              <span className="badge gold">Partners</span>
+              <h2>Trusted brands behind our delivery</h2>
+            </div>
+            <div className="partner-logo-grid">
+                {Partners?.map((element , index)=>(
+                  <div className="partner-logo-card" key={index}>
+                    <LogoMark src={element} alt="SEC Engineering and Contracting" large />
+                  </div>
+                ))}
+            </div>
           </div>
         </section>
       </main>
