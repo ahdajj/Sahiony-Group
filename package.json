@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext .js,.ts,.tsx",
-    "build:client": "esbuild script.js --target=es2015 --outfile=script.es5.js --sourcemap"
+    "build:client": "swc script.js -o script.es5.js -C jsc.target=es5 --source-maps"
   },
   "dependencies": {
     "lucide-react": "^0.511.0",
@@ -17,10 +17,11 @@
     "react-dom": "19.0.0"
   },
   "devDependencies": {
+    "@swc/cli": "^0.6.0",
+    "@swc/core": "^1.13.5",
     "@types/node": "25.5.0",
     "@types/nodemailer": "^8.0.1",
     "@types/react": "19.2.14",
-    "esbuild": "^0.25.9",
     "eslint": "^9.34.0",
     "eslint-config-next": "^16.2.9",
     "typescript": "5.9.3"
