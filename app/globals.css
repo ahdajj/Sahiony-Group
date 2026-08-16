@@ -1182,6 +1182,12 @@ a.lang-switch-label:hover {
     margin: 10px 0;
 }
 
+@media (max-width: 760px) {
+  .Hero-subtitle {
+    display: none;
+  }
+}
+
 .Hero-meta h1 {
     font-size: 4.5rem;
     font-weight: 700;

@@ -29,7 +29,7 @@ export function  Heroarea({ lang }: { lang: Language }) {
             <div className="Hero-overlay">
                 <div className="Hero-meta">
                     <small>{text.groupName}</small>
-                    <span>{text.brandSubtitle}</span>
+                    <span className="Hero-subtitle">{text.brandSubtitle}</span>
                     <h1>{text.Greeting} </h1>
                     <button 
                         onClick={scrollToNextSection}
