@@ -229,23 +229,27 @@
   <script>
   (function(){
     if (!('querySelector' in document) || !('addEventListener' in window)) { return; }
-    function load(src){ var s=document.createElement('script'); s.src=src; s.defer=true; document.body.appendChild(s); }
 
-    var needPolyfills = !('IntersectionObserver' in window) || !('requestAnimationFrame' in window) || !('Intl' in window);
-
-    // Detect module support via the presence of the `noModule` property.
-    var scriptTest = document.createElement('script');
-    var supportsModule = ('noModule' in scriptTest);
-
-    if (needPolyfills) {
-      load('https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver,requestAnimationFrame,Intl');
+    function loadScript(src, onDone){
+      var s = document.createElement('script');
+      s.src = src;
+      s.defer = true;
+      s.onload = function(){ if (onDone) { onDone(); } };
+      s.onerror = function(){ if (onDone) { onDone(); } };
+      document.body.appendChild(s);
     }
 
-    if (supportsModule) {
-      load('script.js');
+    function loadAppScript(){
+      var scriptTest = document.createElement('script');
+      var supportsModule = ('noModule' in scriptTest);
+      loadScript(supportsModule ? 'script.js' : 'script.es5.js');
+    }
+
+    var needIntersectionObserver = !('IntersectionObserver' in window);
+    if (needIntersectionObserver) {
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/intersection-observer/0.12.2/intersection-observer.min.js', loadAppScript);
     } else {
-      // Legacy: load transpiled ES5 bundle
-      load('script.es5.js');
+      loadAppScript();
     }
   })();
   </script>

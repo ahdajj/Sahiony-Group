@@ -133,7 +133,25 @@ const translations = {
   }
 };
 
-let currentLang = localStorage.getItem('sec-lang') || 'en';
+function safeGetLocalStorage(key) {
+  try {
+    return window.localStorage ? window.localStorage.getItem(key) : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function safeSetLocalStorage(key, value) {
+  try {
+    if (window.localStorage) {
+      window.localStorage.setItem(key, value);
+    }
+  } catch (error) {
+    // Ignore storage failures in private mode / restricted environments.
+  }
+}
+
+let currentLang = safeGetLocalStorage('sec-lang') || 'en';
 
 function formatNumber(value) {
   const locale = currentLang === 'ar' ? 'ar-EG' : 'en-US';
@@ -152,7 +170,7 @@ function updateCounterDisplay() {
 function setLanguage(lang) {
   const selected = translations[lang] ? lang : 'en';
   currentLang = selected;
-  localStorage.setItem('sec-lang', selected);
+  safeSetLocalStorage('sec-lang', selected);
 
   document.documentElement.lang = selected;
   document.documentElement.dir = selected === 'ar' ? 'rtl' : 'ltr';
@@ -194,46 +212,54 @@ languageButtons.forEach((button) => {
 
 setLanguage(currentLang);
 
-const revealObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.18 });
+const supportsIntersectionObserver = typeof window.IntersectionObserver === 'function';
 
-revealItems.forEach((item) => revealObserver.observe(item));
-
-const counterObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) {
-      return;
-    }
-
-    const counter = entry.target;
-    const target = Number(counter.getAttribute('data-counter'));
-    const duration = 1300;
-    const start = performance.now();
-
-    function update(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      counter.textContent = formatNumber(Math.floor(eased * target));
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      } else {
-        counter.textContent = formatNumber(target);
+if (supportsIntersectionObserver) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
-    }
+    });
+  }, { threshold: 0.18 });
 
-    requestAnimationFrame(update);
-    observer.unobserve(counter);
-  });
-}, { threshold: 0.7 });
+  revealItems.forEach((item) => revealObserver.observe(item));
 
-counters.forEach((counter) => counterObserver.observe(counter));
+  const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      const counter = entry.target;
+      const target = Number(counter.getAttribute('data-counter'));
+      const duration = 1300;
+      const start = performance.now();
+
+      function update(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        counter.textContent = formatNumber(Math.floor(eased * target));
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          counter.textContent = formatNumber(target);
+        }
+      }
+
+      requestAnimationFrame(update);
+      observer.unobserve(counter);
+    });
+  }, { threshold: 0.7 });
+
+  counters.forEach((counter) => counterObserver.observe(counter));
+} else {
+  // Older browsers: reveal content and render final counter values immediately.
+  revealItems.forEach((item) => item.classList.add('visible'));
+  updateCounterDisplay();
+}
 
 // ── Mobile navigation toggle ──────────────────────
 const navToggle = document.querySelector('.nav-toggle');

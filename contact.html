@@ -96,6 +96,32 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+  (function(){
+    if (!('querySelector' in document) || !('addEventListener' in window)) { return; }
+
+    function loadScript(src, onDone){
+      var s = document.createElement('script');
+      s.src = src;
+      s.defer = true;
+      s.onload = function(){ if (onDone) { onDone(); } };
+      s.onerror = function(){ if (onDone) { onDone(); } };
+      document.body.appendChild(s);
+    }
+
+    function loadAppScript(){
+      var scriptTest = document.createElement('script');
+      var supportsModule = ('noModule' in scriptTest);
+      loadScript(supportsModule ? 'script.js' : 'script.es5.js');
+    }
+
+    var needIntersectionObserver = !('IntersectionObserver' in window);
+    if (needIntersectionObserver) {
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/intersection-observer/0.12.2/intersection-observer.min.js', loadAppScript);
+    } else {
+      loadAppScript();
+    }
+  })();
+  </script>
 </body>
 </html>

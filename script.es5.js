@@ -133,7 +133,23 @@ var translations = {
     footerText: 'شركة SEC صهيوني للهندسة والمقاولات. جميع الحقوق محفوظة.'
   }
 };
-var currentLang = localStorage.getItem('sec-lang') || 'en';
+function safeGetLocalStorage(key) {
+  try {
+    return window.localStorage ? window.localStorage.getItem(key) : null;
+  } catch (error) {
+    return null;
+  }
+}
+function safeSetLocalStorage(key, value) {
+  try {
+    if (window.localStorage) {
+      window.localStorage.setItem(key, value);
+    }
+  } catch (error) {
+    // Ignore storage failures in private mode / restricted environments.
+  }
+}
+var currentLang = safeGetLocalStorage('sec-lang') || 'en';
 function formatNumber(value) {
   var locale = currentLang === 'ar' ? 'ar-EG' : 'en-US';
   return value.toLocaleString(locale);
@@ -149,7 +165,7 @@ function updateCounterDisplay() {
 function setLanguage(lang) {
   var selected = translations[lang] ? lang : 'en';
   currentLang = selected;
-  localStorage.setItem('sec-lang', selected);
+  safeSetLocalStorage('sec-lang', selected);
   document.documentElement.lang = selected;
   document.documentElement.dir = selected === 'ar' ? 'rtl' : 'ltr';
   document.body.dir = selected === 'ar' ? 'rtl' : 'ltr';
@@ -181,47 +197,56 @@ languageButtons.forEach(function (button) {
   });
 });
 setLanguage(currentLang);
-var revealObserver = new IntersectionObserver(function (entries, observer) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.18
-});
-revealItems.forEach(function (item) {
-  return revealObserver.observe(item);
-});
-var counterObserver = new IntersectionObserver(function (entries, observer) {
-  entries.forEach(function (entry) {
-    if (!entry.isIntersecting) {
-      return;
-    }
-    var counter = entry.target;
-    var target = Number(counter.getAttribute('data-counter'));
-    var duration = 1300;
-    var start = performance.now();
-    function update(now) {
-      var progress = Math.min((now - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      counter.textContent = formatNumber(Math.floor(eased * target));
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      } else {
-        counter.textContent = formatNumber(target);
+var supportsIntersectionObserver = typeof window.IntersectionObserver === 'function';
+if (supportsIntersectionObserver) {
+  var revealObserver = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
-    }
-    requestAnimationFrame(update);
-    observer.unobserve(counter);
+    });
+  }, {
+    threshold: 0.18
   });
-}, {
-  threshold: 0.7
-});
-counters.forEach(function (counter) {
-  return counterObserver.observe(counter);
-});
+  revealItems.forEach(function (item) {
+    return revealObserver.observe(item);
+  });
+  var counterObserver = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) {
+        return;
+      }
+      var counter = entry.target;
+      var target = Number(counter.getAttribute('data-counter'));
+      var duration = 1300;
+      var start = performance.now();
+      function update(now) {
+        var progress = Math.min((now - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        counter.textContent = formatNumber(Math.floor(eased * target));
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          counter.textContent = formatNumber(target);
+        }
+      }
+      requestAnimationFrame(update);
+      observer.unobserve(counter);
+    });
+  }, {
+    threshold: 0.7
+  });
+  counters.forEach(function (counter) {
+    return counterObserver.observe(counter);
+  });
+} else {
+  // Older browsers: reveal content and render final counter values immediately.
+  revealItems.forEach(function (item) {
+    return item.classList.add('visible');
+  });
+  updateCounterDisplay();
+}
 
 // ── Mobile navigation toggle ──────────────────────
 var navToggle = document.querySelector('.nav-toggle');

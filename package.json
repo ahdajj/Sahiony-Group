@@ -7,24 +7,25 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:client": "npx babel script.js --config-file .babel.client.json -o script.es5.js --source-maps"
+    "build:client": "npx babel script.js --config-file ./.babel.client.json -o script.es5.js --source-maps"
   },
   "dependencies": {
     "lucide-react": "^0.511.0",
-    "nodemailer": "^6.9.4",
     "next": "^16.2.9",
+    "nodemailer": "^6.9.4",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.24.0",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
     "@types/node": "25.5.0",
+    "@types/nodemailer": "^8.0.1",
     "@types/react": "19.2.14",
     "eslint": "8.57.0",
     "eslint-config-next": "^15.5.14",
-    "typescript": "5.9.3",
-    "@babel/core": "^7.24.0",
-    "@babel/cli": "^7.24.0",
-    "@babel/preset-env": "^7.24.0"
+    "typescript": "5.9.3"
   },
   "description": "Production-ready Next.js starter for:\r - HTA Construction & Trading (Qatar)\r - SEC Engineering & Contracting (Syria)\r - Unified Sahiony Group presentation",
   "main": "script.js",
