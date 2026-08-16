@@ -4,6 +4,10 @@ const year = document.getElementById('year');
 const translationNodes = document.querySelectorAll('[data-i18n]');
 const languageButtons = document.querySelectorAll('.lang-btn');
 
+function forEachNode(list, callback) {
+  Array.prototype.forEach.call(list, callback);
+}
+
 const translations = {
   en: {
     pageTitle: 'SEC Sahiony | Engineering & Contracting',
@@ -159,7 +163,7 @@ function formatNumber(value) {
 }
 
 function updateCounterDisplay() {
-  counters.forEach((counter) => {
+  forEachNode(counters, (counter) => {
     const target = Number(counter.getAttribute('data-counter'));
     if (!Number.isNaN(target)) {
       counter.textContent = formatNumber(target);
@@ -177,7 +181,7 @@ function setLanguage(lang) {
   document.body.dir = selected === 'ar' ? 'rtl' : 'ltr';
 
   const selectedMap = translations[selected];
-  translationNodes.forEach((node) => {
+  forEachNode(translationNodes, (node) => {
     const key = node.getAttribute('data-i18n');
     if (key && selectedMap[key]) {
       node.textContent = selectedMap[key];
@@ -193,7 +197,7 @@ function setLanguage(lang) {
     metaDescription.setAttribute('content', selectedMap.metaDescription);
   }
 
-  languageButtons.forEach((button) => {
+  forEachNode(languageButtons, (button) => {
     button.classList.toggle('active', button.dataset.lang === selected);
   });
 
@@ -204,7 +208,7 @@ if (year) {
   year.textContent = String(new Date().getFullYear());
 }
 
-languageButtons.forEach((button) => {
+forEachNode(languageButtons, (button) => {
   button.addEventListener('click', () => {
     setLanguage(button.dataset.lang || 'en');
   });
@@ -224,7 +228,7 @@ if (supportsIntersectionObserver) {
     });
   }, { threshold: 0.18 });
 
-  revealItems.forEach((item) => revealObserver.observe(item));
+  forEachNode(revealItems, (item) => revealObserver.observe(item));
 
   const counterObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
@@ -254,10 +258,10 @@ if (supportsIntersectionObserver) {
     });
   }, { threshold: 0.7 });
 
-  counters.forEach((counter) => counterObserver.observe(counter));
+  forEachNode(counters, (counter) => counterObserver.observe(counter));
 } else {
   // Older browsers: reveal content and render final counter values immediately.
-  revealItems.forEach((item) => item.classList.add('visible'));
+  forEachNode(revealItems, (item) => item.classList.add('visible'));
   updateCounterDisplay();
 }
 
@@ -271,7 +275,7 @@ if (navToggle && siteHeader) {
     navToggle.setAttribute('aria-expanded', String(isOpen));
   });
 
-  document.querySelectorAll('.main-nav a').forEach((link) => {
+  forEachNode(document.querySelectorAll('.main-nav a'), (link) => {
     link.addEventListener('click', () => {
       siteHeader.classList.remove('nav-open');
       navToggle.setAttribute('aria-expanded', 'false');

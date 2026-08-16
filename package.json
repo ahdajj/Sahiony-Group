@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run build:client && next build",
     "start": "next start",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "build:client": "swc script.js -o script.es5.js -C jsc.target=es5 --source-maps"

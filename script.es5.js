@@ -3,6 +3,9 @@ var counters = document.querySelectorAll('[data-counter]');
 var year = document.getElementById('year');
 var translationNodes = document.querySelectorAll('[data-i18n]');
 var languageButtons = document.querySelectorAll('.lang-btn');
+function forEachNode(list, callback) {
+    Array.prototype.forEach.call(list, callback);
+}
 var translations = {
     en: {
         pageTitle: 'SEC Sahiony | Engineering & Contracting',
@@ -153,7 +156,7 @@ function formatNumber(value) {
     return value.toLocaleString(locale);
 }
 function updateCounterDisplay() {
-    counters.forEach(function(counter) {
+    forEachNode(counters, function(counter) {
         var target = Number(counter.getAttribute('data-counter'));
         if (!Number.isNaN(target)) {
             counter.textContent = formatNumber(target);
@@ -168,7 +171,7 @@ function setLanguage(lang) {
     document.documentElement.dir = selected === 'ar' ? 'rtl' : 'ltr';
     document.body.dir = selected === 'ar' ? 'rtl' : 'ltr';
     var selectedMap = translations[selected];
-    translationNodes.forEach(function(node) {
+    forEachNode(translationNodes, function(node) {
         var key = node.getAttribute('data-i18n');
         if (key && selectedMap[key]) {
             node.textContent = selectedMap[key];
@@ -181,7 +184,7 @@ function setLanguage(lang) {
     if (metaDescription && selectedMap.metaDescription) {
         metaDescription.setAttribute('content', selectedMap.metaDescription);
     }
-    languageButtons.forEach(function(button) {
+    forEachNode(languageButtons, function(button) {
         button.classList.toggle('active', button.dataset.lang === selected);
     });
     updateCounterDisplay();
@@ -189,7 +192,7 @@ function setLanguage(lang) {
 if (year) {
     year.textContent = String(new Date().getFullYear());
 }
-languageButtons.forEach(function(button) {
+forEachNode(languageButtons, function(button) {
     button.addEventListener('click', function() {
         setLanguage(button.dataset.lang || 'en');
     });
@@ -207,7 +210,7 @@ if (supportsIntersectionObserver) {
     }, {
         threshold: 0.18
     });
-    revealItems.forEach(function(item) {
+    forEachNode(revealItems, function(item) {
         return revealObserver.observe(item);
     });
     var counterObserver = new IntersectionObserver(function(entries, observer) {
@@ -235,12 +238,12 @@ if (supportsIntersectionObserver) {
     }, {
         threshold: 0.7
     });
-    counters.forEach(function(counter) {
+    forEachNode(counters, function(counter) {
         return counterObserver.observe(counter);
     });
 } else {
     // Older browsers: reveal content and render final counter values immediately.
-    revealItems.forEach(function(item) {
+    forEachNode(revealItems, function(item) {
         return item.classList.add('visible');
     });
     updateCounterDisplay();
@@ -253,7 +256,7 @@ if (navToggle && siteHeader) {
         var isOpen = siteHeader.classList.toggle('nav-open');
         navToggle.setAttribute('aria-expanded', String(isOpen));
     });
-    document.querySelectorAll('.main-nav a').forEach(function(link) {
+    forEachNode(document.querySelectorAll('.main-nav a'), function(link) {
         link.addEventListener('click', function() {
             siteHeader.classList.remove('nav-open');
             navToggle.setAttribute('aria-expanded', 'false');
