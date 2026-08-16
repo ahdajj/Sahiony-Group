@@ -3,6 +3,7 @@ import { SectionTitle } from '../../components/section-title';
 import { SiteFooter } from '../../components/site-footer';
 import { SiteHeader } from '../../components/site-header';
 import { resolveLanguage, uiText, type SearchParams } from '../../lib/i18n';
+import InquiryForm from '../../components/inquiry-form';
 
 export default async function ContactPage({ searchParams }: { searchParams?: Promise<SearchParams> }) {
   const lang = resolveLanguage(await searchParams);
@@ -40,24 +41,7 @@ export default async function ContactPage({ searchParams }: { searchParams?: Pro
               </div>
             </div>
 
-            <article className="card soft">
-              <div className="card-body">
-                <div className="kicker">{text.sections.requestProposal}</div>
-                <div className="spacer-24" />
-                <div className="form-grid">
-                  <input className="input" placeholder={text.sections.fullName} />
-                  <input className="input" placeholder={text.sections.companyName} />
-                  <input className="input" placeholder={text.sections.emailAddress} />
-                  <input className="input" placeholder={text.sections.phoneNumber} />
-                </div>
-                <div className="spacer-16" />
-                <textarea className="textarea" placeholder={text.sections.inquiryPlaceholder} />
-                <div className="spacer-24" />
-                <button className="btn btn-primary" type="button">
-                  {text.sections.submitInquiry} <ArrowRight size={16} />
-                </button>
-              </div>
-            </article>
+            <InquiryForm text={text.sections} />
           </div>
         </section>
       </main>
