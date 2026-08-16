@@ -93,7 +93,6 @@ export function SiteHeader({ lang }: { lang: Language }) {
         <Link href={withLang('/', lang)} className="brand">
           <div className="brand-meta">
             <small>{text.groupName}</small>
-            <span>{text.brandSubtitle}</span>
           </div>
         </Link>
 
