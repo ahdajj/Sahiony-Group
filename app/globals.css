@@ -108,7 +108,7 @@ img {
 }
 
 .section {
-  padding: 86px 0;
+  padding: 25px 0;
 }
 /* product pages style */
 
@@ -812,6 +812,39 @@ a.lang-switch-label:hover {
 .input::placeholder,
 .textarea::placeholder {
   color: #8b91a1;
+}
+
+.file-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-input-label {
+  display: block;
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(41, 51, 110, 0.2);
+  background: #ffffff;
+  color: #27304c;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-family: var(--font-sans), 'Segoe UI', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-input-label:hover {
+  border-color: rgba(244, 179, 42, 0.4);
+  background: #fafbfd;
+}
+
+.file-input:focus + .file-input-label {
+  outline: 2px solid rgba(244, 179, 42, 0.24);
+  outline-offset: 1px;
 }
 
 .partner-strip {
