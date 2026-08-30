@@ -21,6 +21,7 @@ export function SiteHeader({ lang }: { lang: Language }) {
     { href: '/companies/sec', label: text.nav.sec },
     { href: '/services', label: text.nav.services },
     { href: '/about', label: text.nav.about },
+    { href: '/careers', label: text.nav.careers },
     { href: '/contact', label: text.nav.contact },
   ] as const;
 
