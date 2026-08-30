@@ -304,28 +304,27 @@ const valuePropsAr = valuePropsEn.map((item, index) => {
   };
 });
 
-const categoriesAr = categoriesEn.map((category) => {
-  const translations: Record<string, string> = {
-    'addressable-fire-alarm': 'نظام إنذار الحريق العنواني',
-    'sprinkler-system': 'نظام الرش',
-    'fire-extinguishers': 'طفايات الحريق',
-    'fire-hose-reel': 'دولاب خرطوم الحريق والملحقات',
-    'emergency-signs-exit-lights-fire-cable': 'اللافتات الطوارئ، أضواء الخروج وكابل الحريق',
-    'fire-brigade-valve': 'صمامات فرقة الإطفاء',
-    'firefighting-pump': 'مضخات الإطفاء',
-    'fire-hydrant': 'منافذ الحريق',
-    'conventional-fire-alarm': 'نظام إنذار الحريق التقليدي وكاشف مستقل',
-    'foam-system': 'نظام الرغوة',
-    valves: 'الصمامات',
-    'deluge-valve': 'صمام الديلوج',
-    'wet-chemical': 'نظام إطفاء الحريق الكيميائي الرطب',
-    'fire-extinguishing-system': 'نظام إطفاء الحريق',
-    'fire-extinguishing-panel': 'لوحة إطفاء الحريق',
-  };
-
+const categoriesAr = categoriesEn.map((category , index) => {
+  const categoryAr =[
+    { name :'نظام إنذار الحريق العنواني'},
+    {name :'نظام الرش'},
+    {name:'طفايات الحريق'},
+    {name: 'دولاب خرطوم الحريق والملحقات'},
+    {name :'اللافتات الطوارئ، أضواء الخروج وكابل الحريق'},
+    {name :'صمامات فرقة الإطفاء'} ,
+    {name:'مضخات الإطفاء'},
+    {name:'منافذ الحريق'},
+    {name: 'نظام إنذار الحريق التقليدي وكاشف مستقل'},
+    {name : 'نظام الرغوة'},
+    {name :' الصمامات'},
+    {name : 'صمام الديلوج'},
+    {name :'نظام إطفاء الحريق الكيميائي الرطب'},
+    {name :'نظام إطفاء الحريق'},
+    {name : 'لوحة إطفاء الحريق' }
+  ][index]
   return {
     ...category,
-    name: translations[category.id] ?? category.name,
+    name:categoryAr.name,
   };
 });
 
