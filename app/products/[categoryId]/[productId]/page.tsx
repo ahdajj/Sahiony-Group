@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { SiteFooter } from '../../../../components/site-footer';
 import { SiteHeader } from '../../../../components/site-header';
-import { categories, getProductById, products } from '../../../../lib/products-data';
-import { resolveLanguage, type SearchParams, withLang } from '../../../../lib/i18n';
+import { getProductById, products } from '../../../../lib/products-data';
+import { getLocalizedCategories, getLocalizedProduct, resolveLanguage, type SearchParams, withLang } from '../../../../lib/i18n';
 
 export function generateStaticParams() {
 	return products.map((product) => ({ categoryId: product.categoryId, productId: product.id }));
@@ -12,11 +12,13 @@ export function generateStaticParams() {
 
 export default async function ProductPage({ params, searchParams }: { params: Promise<{ categoryId: string; productId: string }>; searchParams?: Promise<SearchParams> }) {
 	const lang = resolveLanguage(await searchParams);
+	const categories = getLocalizedCategories(lang);
 	const { categoryId, productId } = await params;
-	const product = getProductById(productId);
+	const originalProduct = getProductById(productId);
 	const category = categories.find((item) => item.id === categoryId);
 
-	if (!product || !category || product.categoryId !== category.id) notFound();
+	if (!originalProduct || !category || originalProduct.categoryId !== category.id) notFound();
+	const product = getLocalizedProduct(originalProduct, lang);
 
 	const isArabicPage = lang === 'ar';
 	const specifications = product.specifications ?? [];

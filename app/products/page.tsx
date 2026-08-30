@@ -2,12 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { SiteFooter } from '../../components/site-footer';
 import { SiteHeader } from '../../components/site-header';
-import { categories } from '../../lib/products-data';
-import { resolveLanguage, type SearchParams, withLang } from '../../lib/i18n';
+import { getLocalizedCategories, resolveLanguage, type SearchParams, withLang } from '../../lib/i18n';
 
 export default async function ProductsPage({ searchParams }: { searchParams?: Promise<SearchParams> }) {
 	const lang = resolveLanguage(await searchParams);
 	const isArabicPage = lang === 'ar';
+	const categories = getLocalizedCategories(lang);
 
 	return (
 		<div className="page-shell" lang={lang} dir={isArabicPage ? 'rtl' : 'ltr'}>

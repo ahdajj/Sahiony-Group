@@ -8,7 +8,7 @@ export function SiteFooter({ lang }: { lang: Language }) {
     <footer className="footer">
       <div className="container footer-inner">
         <div className="brand">
-          <LogoMark src="/SEC LOGO SAHIONY.jpg" alt="Sahiony Group" />
+          <LogoMark src="/sec-logo-sahiony.jpg" alt="Sahiony Group" />
           <div>
             <div className="kicker">{text.groupName}</div>
             <div className="footer-note">{text.footer.note}</div>

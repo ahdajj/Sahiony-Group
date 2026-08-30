@@ -22,7 +22,7 @@ export function ProjectCard({
     <article className="card soft">
       <div className="project-hero">
         <div className="project-logo">
-          <LogoMark src="/SEC LOGO SAHIONY.jpg" alt="Sahiony Group" />
+          <LogoMark src="/sec-logo-sahiony.jpg" alt="Sahiony Group" />
         </div>
         <div className="project-hero-inner">
           <div>

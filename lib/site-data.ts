@@ -41,7 +41,7 @@ export const companies: Company[] = [
     id: 'hta',
     name: 'HTA Construction & Trading',
     country: 'Qatar',
-    logo: '/HTA LOgo.jpg',
+    logo: '/hta-logo.jpg',
     icon: Factory,
     description:
       'HTA Construction & Trading Co. W.L.L is a specialized electro-mechanical contracting company based in Doha, Qatar, delivering integrated engineering solutions across Fire Protection Systems and MEP works.The company is built on strong technical expertise, practical site experience, anda commitment to delivering high-quality systems in compliance withinternational standards and local authority requirements.HTA provides complete services including design support, material supply,installation, testing, commissioning, and maintenance, ensuring reliable and eficient system performance.',
@@ -57,7 +57,7 @@ export const companies: Company[] = [
     id: 'sec',
     name: 'SEC Engineering & Contracting',
     country: 'Syria',
-    logo: '/SEC LOGO SAHIONY.jpg',
+    logo: '/sec-logo-sahiony.jpg',
     icon: Building,
     description:
       'SEC is an affiliate of SAHIONY Group of Co. W.L.L. specializing in General contracting & building maintenance.Tracing its roots, SEC Which Based in SYRIA emerged from an General contracting business established more than Ten years in Qatar. It started its operation in Doha, State of Qatar by the year 2015 and has successfully maintained a steady growth in business. With all the experiences, training and techniques it acquired, together with a never ending efforts to render high.',

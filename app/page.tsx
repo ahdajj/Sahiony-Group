@@ -79,8 +79,8 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
                   <h3 style={{ fontSize: 34, marginTop: 10 }}>{text.hero.identityTitle}</h3>
                 </div>
                 <div className="logo-stack">
-                  <LogoMark src="/SEC LOGO SAHIONY.jpg" alt="SEC Engineering and Contracting" large />
-                  <LogoMark src="/HTA LOgo.jpg" alt="HTA Construction and Trading" large />
+                  <LogoMark src="/sec-logo-sahiony.jpg" alt="SEC Engineering and Contracting" large />
+                  <LogoMark src="/hta-logo.jpg" alt="HTA Construction and Trading" large />
                 </div>
               </div>
 
