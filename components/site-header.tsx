@@ -20,6 +20,7 @@ export function SiteHeader({ lang }: { lang: Language }) {
     { href: '/companies/hta', label: text.nav.hta },
     { href: '/companies/sec', label: text.nav.sec },
     { href: '/services', label: text.nav.services },
+    { href: '/products', label: text.nav.products },
     { href: '/about', label: text.nav.about },
     { href: '/careers', label: text.nav.careers },
     { href: '/contact', label: text.nav.contact },
