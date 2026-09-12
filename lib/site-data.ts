@@ -3,13 +3,26 @@ import {
   Building,
   Building2,
   Factory,
-  Flame,
   Gauge,
+  Route,
   ScanSearch,
+  ShieldCheck,
   Wrench,
-  Zap,
   type LucideIcon,
 } from 'lucide-react';
+
+export type CompanyProfileContent = {
+  heroDescription: string;
+  eyebrow: string;
+  title: string;
+  introduction: string;
+  deliveryPillars: { title: string; description: string }[];
+  methodology: { title: string; description: string }[];
+  readiness: string[];
+  governance: { title: string; description: string }[];
+  experience: { title: string; scope: string }[];
+  gallery: { src: string; alt: string; label: string }[];
+};
 
 export type Company = {
   id: string;
@@ -20,6 +33,7 @@ export type Company = {
   description: string;
   bullets: string[];
   pages: string[];
+  profile?: CompanyProfileContent;
 };
 
 export const stats = [
@@ -43,14 +57,58 @@ export const companies: Company[] = [
     country: 'Qatar',
     logo: '/hta-logo.jpg',
     icon: Factory,
-    description: 'HTA delivers MEP and fire protection systems in Doha, Qatar, with services spanning design support, supply, installation, testing, commissioning and maintenance.',
+    description: 'HTA is an integrated construction and engineering partner in Qatar, coordinating roads, civil works, MEP, life safety and building systems through one accountable delivery structure.',
     bullets: [
-      'Electro-mechanical contracting',
-      'Building maintenance services',
-      'Road maintenance & infrastructure',
-      'Project planning & technical support',
+      'Roads & infrastructure',
+      'General contracting & civil works',
+      'MEP engineering systems',
+      'Fire, ELV & building controls',
     ],
     pages: ['Overview', 'Services', 'Projects', 'Certifications', 'Contact'],
+    profile: {
+      heroDescription: 'One accountable delivery partner for roads, civil works, MEP, life safety and intelligent building systems across Qatar.',
+      eyebrow: 'INTEGRATED DELIVERY PLATFORM',
+      title: 'One project. One coordinated execution system.',
+      introduction: 'HTA brings multidisciplinary scopes under a single delivery structure, giving clients clearer responsibility, controlled interfaces and consistent reporting from mobilization through handover.',
+      deliveryPillars: [
+        { title: 'Roads & Infrastructure', description: 'Surveying, earthworks, road layers, asphalt, rehabilitation, drainage and traffic-safety works.' },
+        { title: 'Civil Works', description: 'Structural and civil packages, site development, renovation, interiors and exterior finishes.' },
+        { title: 'MEP Systems', description: 'HVAC, plumbing, drainage and electrical systems coordinated from technical review to commissioning.' },
+        { title: 'Fire, ELV & BMS', description: 'Life-safety, security, low-current and building-control systems delivered as an integrated package.' },
+      ],
+      methodology: [
+        { title: 'Understand the scope', description: 'Review requirements, interfaces, risks and delivery priorities.' },
+        { title: 'Plan mobilization', description: 'Align resources, procurement, programme and site logistics.' },
+        { title: 'Control execution', description: 'Coordinate disciplines through quality, safety and progress controls.' },
+        { title: 'Test and hand over', description: 'Complete inspections, commissioning, documentation and closeout.' },
+        { title: 'Support after handover', description: 'Provide responsive technical and maintenance support.' },
+      ],
+      readiness: [
+        'Road crews, equipment and execution resources',
+        'Engineering and technical-office support',
+        'QA/QC and HSE controls',
+        'Supply-chain and interface coordination',
+      ],
+      governance: [
+        { title: 'Single accountability', description: 'One delivery partner with clear ownership of scope and interfaces.' },
+        { title: 'Integrated project control', description: 'Programme, procurement, quality and site progress managed together.' },
+        { title: 'Early risk visibility', description: 'Constraints and decisions surfaced early through structured reporting.' },
+        { title: 'Structured handover', description: 'Testing, records and closeout organized for a controlled transition.' },
+      ],
+      experience: [
+        { title: 'Road & Infrastructure Works in Qatar', scope: 'Road construction and rehabilitation' },
+        { title: 'ISF Camp – Al Rayyan', scope: 'Civil and infrastructure works' },
+        { title: 'Asphalt Access Road – Umm Taqa', scope: 'Asphalt access-road delivery' },
+        { title: 'GWC Logistics Park', scope: 'ELV systems' },
+        { title: 'Educational Facilities', scope: 'Electrical and life-safety upgrades and maintenance' },
+        { title: 'Protech Buildings', scope: 'Integrated MEP delivery' },
+      ],
+      gallery: [
+        { src: '/hta-roads-delivery.webp', alt: 'HTA road paving team delivering asphalt works in Qatar', label: 'Roads & Infrastructure' },
+        { src: '/Projetcs/HTA/RAS-LAFAN/img-3.jpg', alt: 'Architectural view of a multidisciplinary building project supported by HTA', label: 'Integrated Building Delivery' },
+        { src: '/Projetcs/HTA/AL-MAJED-FARM/img-21.jpg', alt: 'Landscape and site-development design delivered by HTA', label: 'Civil & Site Development' },
+      ],
+    },
   },
   {
     id: 'sec',
@@ -71,28 +129,28 @@ export const companies: Company[] = [
 
 export const services = [
   {
+    title: 'Roads & Infrastructure',
+    icon: Route,
+    description: 'Road construction, rehabilitation, earthworks, asphalt, drainage and traffic-safety packages delivered through controlled field execution.',
+    bullets: ['Road construction', 'Asphalt & rehabilitation', 'Drainage & road safety'],
+  },
+  {
     title: 'General Contracting & Civil Works',
     icon: Building2,
-    description: 'Civil works, building projects and renovation, delivered through SEC in Syria with coordinated technical and site support.',
-    bullets: ['Civil works', 'Renovation', 'Execution management'],
+    description: 'Structural, civil and site-development works, including renovation and coordinated interior and exterior finishes.',
+    bullets: ['Civil & structural works', 'Renovation', 'Site development'],
   },
   {
-    title: 'HVAC, Plumbing & Drainage',
+    title: 'MEP Systems',
     icon: Gauge,
-    description: 'Integrated HVAC, ventilation, plumbing and drainage systems, supported by installation, testing and commissioning.',
-    bullets: ['HVAC', 'Plumbing', 'Drainage'],
+    description: 'Coordinated HVAC, plumbing, drainage and electrical systems supported by installation, testing and commissioning.',
+    bullets: ['HVAC', 'Plumbing & drainage', 'Electrical systems'],
   },
   {
-    title: 'Fire Fighting & Fire Alarm',
-    icon: Flame,
-    description: 'Fire pumps, sprinklers, alarm and suppression systems, with technical support for design and calculations.',
-    bullets: ['Sprinklers', 'Fire pumps', 'Life safety'],
-  },
-  {
-    title: 'Electrical & Low Current',
-    icon: Zap,
-    description: 'Low-voltage power distribution and panels, CCTV, access control, communications and audio-visual systems.',
-    bullets: ['LV systems', 'Panels', 'ELV / low current'],
+    title: 'Fire, ELV & BMS',
+    icon: ShieldCheck,
+    description: 'Integrated life-safety, security, low-current and intelligent building-control systems for coordinated operation.',
+    bullets: ['Fire fighting & alarm', 'Security & low current', 'BMS & controls'],
   },
   {
     title: 'Maintenance & Technical Support',

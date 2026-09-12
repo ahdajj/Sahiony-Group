@@ -28,7 +28,7 @@ export function PageHero({
 }) {
   return (
     <section className="page-hero" aria-labelledby="page-hero-title">
-      <Image className="page-hero-background" src={backgroundImage} alt={backgroundAlt} fill priority sizes="100vw" />
+      <Image className="page-hero-background" src={backgroundImage} alt={backgroundAlt} fill priority loading="eager" sizes="100vw" />
       <div className="container page-hero-inner">
         <div className="page-hero-copy">
           <span className="kicker">{eyebrow}</span>
@@ -44,7 +44,7 @@ export function PageHero({
             </div>
           )}
         </div>
-        {logo && <div className="page-hero-logo"><Image src={logo} alt={logoAlt ?? title} width={430} height={240} priority /></div>}
+        {logo && <div className="page-hero-logo"><Image src={logo} alt={logoAlt ?? title} width={430} height={240} priority loading="eager" /></div>}
       </div>
       {facts.length > 0 && (
         <div className="container page-hero-facts" aria-label={`${title} facts`}>

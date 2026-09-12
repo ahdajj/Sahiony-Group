@@ -11,7 +11,7 @@ import { getLocalizedSiteData, resolveLanguage, withLang, type SearchParams } fr
 
 export const metadata: Metadata = {
   title: 'Services | Sahiony Group',
-  description: 'Engineering, contracting, MEP, fire protection and maintenance services across Qatar and Syria.',
+  description: 'Roads, infrastructure, general contracting, MEP, life safety and project-delivery services across Qatar and Syria.',
 };
 
 export default async function ServicesPage({ searchParams }: { searchParams?: Promise<SearchParams> }) {
@@ -47,7 +47,7 @@ export default async function ServicesPage({ searchParams }: { searchParams?: Pr
             title={ar ? 'فريق واحد لكل مرحلة من مراحل المشروع.' : 'One coordinated team for every project stage.'}
             description={ar ? 'نربط الخبرة الفنية بالتنفيذ العملي، مع نطاق واضح لكل تخصص.' : 'We connect technical planning with practical execution and a clear scope for every discipline.'}
           />
-          <p>{ar ? 'تغطي قدراتنا الأعمال المدنية والأنظمة الكهروميكانيكية والحماية من الحريق والكهرباء والتيار الخفيف والصيانة وإدارة المشاريع.' : 'Our capability covers civil work, MEP, fire protection, electrical and low current systems, maintenance, and project management.'}</p>
+          <p>{ar ? 'تغطي قدراتنا الطرق والبنية التحتية والأعمال المدنية وأنظمة MEP والحريق والتيار الخفيف والتحكم والصيانة وإدارة المشاريع.' : 'Our capability covers roads and infrastructure, civil works, MEP, fire, low-current and building-control systems, maintenance, and project management.'}</p>
         </section>
 
         <section className="container service-directory" aria-label={ar ? 'دليل الخدمات' : 'Service directory'}>

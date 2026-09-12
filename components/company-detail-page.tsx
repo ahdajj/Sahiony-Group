@@ -1,4 +1,5 @@
-import { Building2, ClipboardCheck, ShieldCheck, Wrench } from 'lucide-react';
+import Image from 'next/image';
+import { Building2, Check, ClipboardCheck, Gauge, Route, ShieldCheck, Wrench } from 'lucide-react';
 import type { Company } from '../lib/site-data';
 import { getLocalizedSiteData, type Language, withLang } from '../lib/i18n';
 import { CtaPanel } from './cta-panel';
@@ -9,15 +10,17 @@ import { SiteFooter } from './site-footer';
 import { SiteHeader } from './site-header';
 
 const capabilityIcons = [Building2, ShieldCheck, Wrench, ClipboardCheck] as const;
+const deliveryIcons = [Route, Building2, Gauge, ShieldCheck] as const;
 
 export function CompanyDetailPage({ company, lang }: { company: Company; lang: Language }) {
   const ar = lang === 'ar';
   const { featuredProjects } = getLocalizedSiteData(lang);
   const companyProjects = featuredProjects[company.id === 'hta' ? 'hta' : 'sec'];
+  const profile = company.profile;
   const projectHref = withLang(`/projects?company=${company.id}`, lang);
-  const heroDescription = company.id === 'hta'
+  const heroDescription = profile?.heroDescription ?? (company.id === 'hta'
     ? (ar ? 'حلول متكاملة للأنظمة الكهروميكانيكية والحماية من الحريق في قطر.' : 'Integrated MEP and fire protection delivery across Qatar.')
-    : (ar ? 'خبرة في المقاولات العامة وتأهيل المباني والأنظمة الهندسية في سوريا.' : 'General contracting, building renovation and engineering systems across Syria.');
+    : (ar ? 'خبرة في المقاولات العامة وتأهيل المباني والأنظمة الهندسية في سوريا.' : 'General contracting, building renovation and engineering systems across Syria.'));
 
   return (
     <div className="page-shell home-page company-profile" lang={lang} dir={ar ? 'rtl' : 'ltr'}>
@@ -56,6 +59,87 @@ export function CompanyDetailPage({ company, lang }: { company: Company; lang: L
             })}
           </div>
         </section>
+
+        {profile && (
+          <>
+            <section className="container section hta-platform">
+              <div className="hta-section-heading">
+                <SectionTitle eyebrow={profile.eyebrow} title={profile.title} />
+                <p>{profile.introduction}</p>
+              </div>
+              <div className="hta-platform-grid">
+                {profile.deliveryPillars.map((pillar, index) => {
+                  const Icon = deliveryIcons[index] ?? Building2;
+                  return (
+                    <article className="hta-platform-card" key={pillar.title}>
+                      <span className="hta-platform-icon"><Icon size={27} strokeWidth={1.45} aria-hidden="true" /></span>
+                      <h3>{pillar.title}</h3>
+                      <p>{pillar.description}</p>
+                    </article>
+                  );
+                })}
+              </div>
+            </section>
+
+            <section className="section section-alt hta-delivery-section">
+              <div className="container">
+                <SectionTitle
+                  eyebrow={ar ? 'منهجية التنفيذ' : 'EXECUTION METHODOLOGY'}
+                  title={ar ? 'تخطيط قبل التنفيذ. ضبط حتى التسليم.' : 'Planned before site. Controlled through handover.'}
+                  description={ar ? 'مسار عمل واضح يربط القرار الهندسي بالتنفيذ والإغلاق المنظم.' : 'A clear delivery path connecting engineering decisions with field execution and organized closeout.'}
+                />
+                <div className="hta-delivery-layout">
+                  <ol className="hta-methodology">
+                    {profile.methodology.map((step, index) => (
+                      <li key={step.title}>
+                        <span>{String(index + 1).padStart(2, '0')}</span>
+                        <div><h3>{step.title}</h3><p>{step.description}</p></div>
+                      </li>
+                    ))}
+                  </ol>
+
+                  <aside className="hta-readiness">
+                    <div className="hta-readiness-copy">
+                      <span className="kicker">{ar ? 'الجاهزية التشغيلية' : 'OPERATIONAL READINESS'}</span>
+                      <h3>{ar ? 'الموارد والرقابة التي تدعم التنفيذ.' : 'The resources and controls behind delivery.'}</h3>
+                      <ul>{profile.readiness.map((item) => <li key={item}><Check size={17} aria-hidden="true" />{item}</li>)}</ul>
+                    </div>
+                    <div className="hta-proof-gallery">
+                      {profile.gallery.map((item, index) => (
+                        <figure className={index === 0 ? 'hta-proof-featured' : undefined} key={item.src}>
+                          <Image src={item.src} alt={item.alt} fill sizes={index === 0 ? '(max-width: 820px) 100vw, 34vw' : '(max-width: 820px) 50vw, 17vw'} />
+                          <figcaption>{item.label}</figcaption>
+                        </figure>
+                      ))}
+                    </div>
+                  </aside>
+                </div>
+              </div>
+            </section>
+
+            <section className="section hta-assurance-section">
+              <div className="container">
+                <SectionTitle
+                  eyebrow={ar ? 'ضبط المشروع' : 'PROJECT GOVERNANCE'}
+                  title={ar ? 'وضوح تنفيذي في كل مرحلة.' : 'Executive clarity at every stage.'}
+                  description={ar ? 'ضوابط عملية تمنح العميل رؤية واضحة للمسؤوليات والمخاطر والتقدم والتسليم.' : 'Practical controls give clients a clear view of responsibility, risk, progress and handover.'}
+                />
+                <div className="hta-governance-grid">
+                  {profile.governance.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}
+                </div>
+                <div className="hta-experience">
+                  <div className="hta-experience-heading">
+                    <span className="kicker">{ar ? 'خبرات مختارة' : 'SELECTED EXPERIENCE'}</span>
+                    <h3>{ar ? 'نطاق متنوع. منظومة تنفيذ واحدة.' : 'Diverse scopes. One delivery standard.'}</h3>
+                  </div>
+                  <div className="hta-experience-grid">
+                    {profile.experience.map((item) => <article key={item.title}><span>{item.scope}</span><h4>{item.title}</h4></article>)}
+                  </div>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
 
         <section className="section section-alt profile-projects">
           <div className="container">
