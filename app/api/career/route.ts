@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     const text = `Name: ${fullName}\nEmail: ${emailAddress}\nPhone: ${phoneNumber || '-'}\nPosition Applied For: ${position}\n\nExperience & Qualifications:\n${experience}`;
 
     // Prepare attachments
-    const attachments: any[] = [];
+    const attachments: { filename: string; content: Buffer }[] = [];
     
     if (cvFile) {
       const buffer = await cvFile.arrayBuffer();
@@ -52,8 +52,8 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ ok: true });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('Failed to send career application email', err);
-    return NextResponse.json({ error: err?.message || 'Server error' }, { status: 500 });
+    return NextResponse.json({ error: err instanceof Error ? err.message : 'Server error' }, { status: 500 });
   }
 }

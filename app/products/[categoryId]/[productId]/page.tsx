@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { SiteFooter } from '../../../../components/site-footer';
 import { SiteHeader } from '../../../../components/site-header';
+import { CtaPanel } from '../../../../components/cta-panel';
 import { getProductById, products } from '../../../../lib/products-data';
 import { getLocalizedCategories, getLocalizedProduct, resolveLanguage, type SearchParams, withLang } from '../../../../lib/i18n';
 
@@ -25,7 +26,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 	const variants = product.variants ?? [];
 
 	return (
-		<div className="page-shell" lang={lang} dir={isArabicPage ? 'rtl' : 'ltr'}>
+		<div className="page-shell home-page product-page" lang={lang} dir={isArabicPage ? 'rtl' : 'ltr'}>
 			<SiteHeader lang={lang} />
 			<main>
 				<section className="container section product-detail-page">
@@ -46,6 +47,7 @@ export default async function ProductPage({ params, searchParams }: { params: Pr
 					{product.applications && <section className="product-detail-section"><h2>{isArabicPage ? 'الاستخدامات' : 'Applications'}</h2><ul className="product-bullet-list">{product.applications.map((application) => <li key={application}>{application}</li>)}</ul></section>}
 					{product.certifications && <section className="product-detail-section"><h2>{isArabicPage ? 'الاعتمادات' : 'Certifications'}</h2><div className="pill-row">{product.certifications.map((certification) => <span className="pill" key={certification}>{certification}</span>)}</div></section>}
 				</section>
+				<CtaPanel eyebrow={isArabicPage ? 'معلومات فنية' : 'TECHNICAL INFORMATION'} title={isArabicPage ? 'هل تريد التأكد من ملاءمة هذا المنتج لمشروعك؟' : 'Need to confirm this product fits your project?'} description={isArabicPage ? 'تواصل مع فريقنا وشاركنا المواصفات أو متطلبات المشروع.' : 'Contact our team with the specification or project requirement.'} href={withLang('/contact', lang)} action={isArabicPage ? 'اطلب معلومات' : 'Request information'} />
 			</main>
 			<SiteFooter lang={lang} />
 		</div>

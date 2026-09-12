@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { isArabic, type Language, uiText, withLang } from '../lib/i18n';
 
@@ -17,17 +17,22 @@ export function SiteHeader({ lang }: { lang: Language }) {
   const drawerId = 'mobile-nav-drawer';
   const text = uiText[lang];
 
-  const navItems = [
+  const primaryNavItems = [
     { href: '/', label: text.nav.home },
-    { href: '/companies/hta', label: text.nav.hta },
-    { href: '/companies/sec', label: text.nav.sec },
     { href: '/projects', label: lang === 'ar' ? 'المشاريع' : 'Projects' },
     { href: '/services', label: text.nav.services },
     { href: '/products', label: text.nav.products },
-    { href: '/about', label: text.nav.about },
-    { href: '/careers', label: text.nav.careers },
     { href: '/contact', label: text.nav.contact },
   ] as const;
+  const mobileNavItems = [
+    primaryNavItems[0],
+    { href: '/companies/hta', label: text.nav.hta },
+    { href: '/companies/sec', label: text.nav.sec },
+    ...primaryNavItems.slice(1),
+    { href: '/about', label: text.nav.about },
+    { href: '/careers', label: text.nav.careers },
+  ] as const;
+  const isActive = (href: string) => pathname === href || (href === '/projects' && pathname.startsWith('/projects/'));
 
   const switchLanguageHref = useMemo(() => {
     const nextIsArabic = lang === 'en';
@@ -100,11 +105,15 @@ export function SiteHeader({ lang }: { lang: Language }) {
         </Link>
 
         <nav className="nav" aria-label={text.mobileNavLabel}>
-          {navItems.map((item) => (
-            <Link key={item.href} href={withLang(item.href, lang)} aria-current={(pathname === item.href || (item.href === '/projects' && pathname.startsWith('/projects/'))) ? 'page' : undefined}>
-              {item.label}
-            </Link>
-          ))}
+          <Link href={withLang('/', lang)} aria-current={isActive('/') ? 'page' : undefined}>{text.nav.home}</Link>
+          <details className={`nav-dropdown ${pathname.startsWith('/companies/') ? 'is-active' : ''}`}>
+            <summary>{lang === 'ar' ? 'الشركات' : 'Companies'} <ChevronDown size={14} aria-hidden="true" /></summary>
+            <div className="nav-dropdown-menu">
+              <Link href={withLang('/companies/hta', lang)}>{text.nav.hta}<small>{lang === 'ar' ? 'المقاولات والأنظمة الهندسية' : 'Contracting & engineering systems'}</small></Link>
+              <Link href={withLang('/companies/sec', lang)}>{text.nav.sec}<small>{lang === 'ar' ? 'الهندسة والمقاولات' : 'Engineering & contracting'}</small></Link>
+            </div>
+          </details>
+          {primaryNavItems.slice(1).map((item) => <Link key={item.href} href={withLang(item.href, lang)} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</Link>)}
         </nav>
 
         <div className="header-actions" style={{ display: open ? 'none' : undefined }}>
@@ -163,8 +172,8 @@ export function SiteHeader({ lang }: { lang: Language }) {
         </div>
 
         <nav className="mobile-drawer-nav" aria-label={text.mobileNavLabel}>
-          {navItems.map((item) => (
-            <Link key={item.href} href={withLang(item.href, lang)} onClick={() => setOpen(false)}>
+          {mobileNavItems.map((item) => (
+            <Link key={item.href} href={withLang(item.href, lang)} aria-current={isActive(item.href) ? 'page' : undefined} onClick={() => setOpen(false)}>
               {item.label}
             </Link>
           ))}

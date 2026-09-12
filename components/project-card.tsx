@@ -10,14 +10,22 @@ export function ProjectCard({ title, category, summary, lang, slug }: {
   const project = [...featuredProjects.hta, ...featuredProjects.sec].find(item => item.slug === slug);
   const cover = project?.img?.[0];
   return (
-    <article className="card soft">
-      {cover && <Image className="project-cover" src={cover} alt={title} width={640} height={440} sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 33vw" />}
-      <div className="card-body">
-        <div className="project-category">{category}</div>
-        <h3 className="project-title" style={{ marginTop: 12 }}>{title}</h3>
-        <p className="project-summary">{summary}</p>
-        <Link className="project-card-link" href={withLang(`/projects/${slug}`, lang)}>{uiText[lang].sections.openCaseStudy}<ArrowUpRight size={16} aria-hidden="true" /></Link>
-      </div>
+    <article className="project-editorial-card">
+      <Link className="project-editorial-link" href={withLang(`/projects/${slug}`, lang)} aria-label={`${uiText[lang].sections.openCaseStudy}: ${title}`}>
+        <div className="project-editorial-media">
+          {cover && <Image className="project-cover" src={cover} alt={title} fill sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 33vw" />}
+          <span className="project-editorial-badge">{category}</span>
+          <span className="editorial-arrow" aria-hidden="true"><ArrowUpRight size={18} /></span>
+        </div>
+        <div className="project-editorial-body">
+          <h3 className="project-title">{title}</h3>
+          <div className="project-editorial-scope">
+            <span>{lang === 'ar' ? 'نطاق العمل' : 'Scope'}</span>
+            <p className="project-summary">{summary}</p>
+          </div>
+          <span className="project-editorial-action">{uiText[lang].sections.openCaseStudy}<ArrowUpRight size={16} aria-hidden="true" /></span>
+        </div>
+      </Link>
     </article>
   );
 }
