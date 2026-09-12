@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Menu, X } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { isArabic, type Language, uiText, withLang } from '../lib/i18n';
 
@@ -132,8 +132,9 @@ export function SiteHeader({ lang }: { lang: Language }) {
               )}
             </span>
           </div>
-          <Link href={withLang('/contact', lang)} className="btn btn-primary desktop-only">
+          <Link href={withLang('/contact', lang)} className="btn btn-topbar-cta desktop-only">
             {text.ctaProposal}
+            <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
         </div>
 
