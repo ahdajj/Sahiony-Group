@@ -119,12 +119,12 @@ export function SiteHeader({ lang }: { lang: Language }) {
         <div className="header-actions" style={{ display: open ? 'none' : undefined }}>
           <div className={`lang-switch ${lang === 'ar' ? 'is-ar' : ''}`} role="group" aria-label="Language selector">
             <span className="lang-switch-track">
-              <span className="lang-switch-thumb" aria-hidden="true" />
               {lang === 'en' ? (
                 <span className="lang-switch-label lang-en" aria-current="true">English</span>
               ) : (
                 <Link href={switchLanguageHref} className="lang-switch-label lang-en">English</Link>
               )}
+              <span className="lang-switch-sep" aria-hidden="true">|</span>
               {lang === 'ar' ? (
                 <span className="lang-switch-label lang-ar" aria-current="true">العربية</span>
               ) : (
@@ -182,12 +182,12 @@ export function SiteHeader({ lang }: { lang: Language }) {
         <div className="mobile-drawer-actions">
           <div className={`lang-switch mobile-lang-switch ${lang === 'ar' ? 'is-ar' : ''}`} role="group" aria-label="Language selector">
             <span className="lang-switch-track">
-              <span className="lang-switch-thumb" aria-hidden="true" />
               {lang === 'en' ? (
                 <span className="lang-switch-label lang-en" aria-current="true">English</span>
               ) : (
                 <Link href={switchLanguageHref} className="lang-switch-label lang-en" onClick={() => setOpen(false)}>English</Link>
               )}
+              <span className="lang-switch-sep" aria-hidden="true">|</span>
               {lang === 'ar' ? (
                 <span className="lang-switch-label lang-ar" aria-current="true">العربية</span>
               ) : (
