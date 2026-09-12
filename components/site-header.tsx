@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -19,6 +21,7 @@ export function SiteHeader({ lang }: { lang: Language }) {
     { href: '/', label: text.nav.home },
     { href: '/companies/hta', label: text.nav.hta },
     { href: '/companies/sec', label: text.nav.sec },
+    { href: '/projects', label: lang === 'ar' ? 'المشاريع' : 'Projects' },
     { href: '/services', label: text.nav.services },
     { href: '/products', label: text.nav.products },
     { href: '/about', label: text.nav.about },
@@ -93,14 +96,12 @@ export function SiteHeader({ lang }: { lang: Language }) {
     <header className="topbar">
       <div className="container topbar-inner">
         <Link href={withLang('/', lang)} className="brand">
-          <div className="brand-meta">
-            <small>{text.groupName}</small>
-          </div>
+          <Image src="/Sahiony_Group_Logo_Transparent.svg" alt={text.groupName} width={1173} height={932} className="brand-icon" priority />
         </Link>
 
-        <nav className="nav">
+        <nav className="nav" aria-label={text.mobileNavLabel}>
           {navItems.map((item) => (
-            <Link key={item.href} href={withLang(item.href, lang)}>
+            <Link key={item.href} href={withLang(item.href, lang)} aria-current={(pathname === item.href || (item.href === '/projects' && pathname.startsWith('/projects/'))) ? 'page' : undefined}>
               {item.label}
             </Link>
           ))}
@@ -149,6 +150,8 @@ export function SiteHeader({ lang }: { lang: Language }) {
         className={`mobile-drawer ${open ? 'open' : ''}`}
         role="dialog"
         aria-modal="true"
+        aria-hidden={!open}
+        inert={!open}
         aria-label={text.mobileNavLabel}
       >
         <div className="mobile-drawer-header">
@@ -192,3 +195,4 @@ export function SiteHeader({ lang }: { lang: Language }) {
     </header>
   );
 }
+

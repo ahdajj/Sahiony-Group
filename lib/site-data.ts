@@ -43,8 +43,7 @@ export const companies: Company[] = [
     country: 'Qatar',
     logo: '/hta-logo.jpg',
     icon: Factory,
-    description:
-      'HTA Construction & Trading Co. W.L.L is a specialized electro-mechanical contracting company based in Doha, Qatar, delivering integrated engineering solutions across Fire Protection Systems and MEP works.The company is built on strong technical expertise, practical site experience, anda commitment to delivering high-quality systems in compliance withinternational standards and local authority requirements.HTA provides complete services including design support, material supply,installation, testing, commissioning, and maintenance, ensuring reliable and eficient system performance.',
+    description: 'HTA delivers MEP and fire protection systems in Doha, Qatar, with services spanning design support, supply, installation, testing, commissioning and maintenance.',
     bullets: [
       'Electro-mechanical contracting',
       'Building maintenance services',
@@ -59,8 +58,7 @@ export const companies: Company[] = [
     country: 'Syria',
     logo: '/sec-logo-sahiony.jpg',
     icon: Building,
-    description:
-      'SEC is an affiliate of SAHIONY Group of Co. W.L.L. specializing in General contracting & building maintenance.Tracing its roots, SEC Which Based in SYRIA emerged from an General contracting business established more than Ten years in Qatar. It started its operation in Doha, State of Qatar by the year 2015 and has successfully maintained a steady growth in business. With all the experiences, training and techniques it acquired, together with a never ending efforts to render high.',
+    description: 'SEC brings engineering experience to Syria through general contracting, building renovation, MEP systems and maintenance services.',
     bullets: [
       'General contracting & renovation',
       'MEP and life safety systems',
@@ -75,43 +73,37 @@ export const services = [
   {
     title: 'General Contracting & Civil Works',
     icon: Building2,
-    description:
-      'Delivered primarily through SEC in Syria and supported by group execution logic across institutional, renovation, and building projects.',
+    description: 'Civil works, building projects and renovation, delivered through SEC in Syria with coordinated technical and site support.',
     bullets: ['Civil works', 'Renovation', 'Execution management'],
   },
   {
     title: 'HVAC, Plumbing & Drainage',
     icon: Gauge,
-    description:
-      'Across the group, the profiles show HVAC, plumbing, drainage, ventilation, smoke exhaust, heating, and generator-linked support systems.',
+    description: 'Integrated HVAC, ventilation, plumbing and drainage systems, supported by installation, testing and commissioning.',
     bullets: ['HVAC', 'Plumbing', 'Drainage'],
   },
   {
     title: 'Fire Fighting & Fire Alarm',
     icon: Flame,
-    description:
-      'Both companies strongly position fire protection, fire pumps, sprinklers, fire alarm, suppression systems, and technical-office support for design and calculations.',
+    description: 'Fire pumps, sprinklers, alarm and suppression systems, with technical support for design and calculations.',
     bullets: ['Sprinklers', 'Fire pumps', 'Life safety'],
   },
   {
     title: 'Electrical & Low Current',
     icon: Zap,
-    description:
-      'Low-voltage distribution, panels, busbar trunking, access control, CCTV, public address, data and voice, SMATV, and audio-visual infrastructure.',
+    description: 'Low-voltage power distribution and panels, CCTV, access control, communications and audio-visual systems.',
     bullets: ['LV systems', 'Panels', 'ELV / low current'],
   },
   {
     title: 'Maintenance & Technical Support',
     icon: Wrench,
-    description:
-      'The group profile supports a strong maintenance position with trained technicians, site support, reactive and planned maintenance capability.',
+    description: 'Planned and reactive maintenance, backed by trained technicians and practical support for buildings and MEP systems.',
     bullets: ['Building maintenance', 'MEP support', 'Skilled technicians'],
   },
   {
     title: 'Project Management & Technical Office',
     icon: ScanSearch,
-    description:
-      'Design, planning, testing, commissioning, QA/QC logic, procurement support, and project delivery coordination across both companies.',
+    description: 'Project planning, procurement support, quality control, testing and commissioning across both companies.',
     bullets: ['Planning', 'QA/QC', 'Commissioning'],
   },
 ] as const;
@@ -258,7 +250,7 @@ export const featuredProjects: FeaturedProjectsData = {
       title: 'STAMO AIRPORT',
       category: 'SEC / Syria',
       summary:
-        'A Syria-side portfolio item suitable to anchor SEC’s local project showcase as part of the group website structure.',
+        'Stamo Airport, Syria.',
       img:['/Projetcs/SEC/STAMO-AIRPORT/img-1.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-2.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-3.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-4.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-5.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-6.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-7.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-8.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-9.jpg','/Projetcs/SEC/STAMO-AIRPORT/img-10.jpg']
     },
     {
